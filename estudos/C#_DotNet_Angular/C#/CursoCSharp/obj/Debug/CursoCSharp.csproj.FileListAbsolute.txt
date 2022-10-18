@@ -1,0 +1,14 @@
+C:\Users\User\source\repos\CursoCSharp\obj\Debug\CursoCSharp.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\CursoCSharp\bin\Debug\CursoCSharp.exe.config
+C:\Users\User\source\repos\CursoCSharp\bin\Debug\CursoCSharp.exe
+C:\Users\User\source\repos\CursoCSharp\bin\Debug\CursoCSharp.pdb
+C:\Users\User\source\repos\CursoCSharp\obj\Debug\CursoCSharp.exe
+C:\Users\User\source\repos\CursoCSharp\obj\Debug\CursoCSharp.pdb
+C:\Users\User\source\repos\CursoCSharp\obj\Debug\CursoCSharp.csproj.AssemblyReference.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\CursoCSharp\bin\Debug\CursoCSharp.exe.config
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\CursoCSharp\bin\Debug\CursoCSharp.exe
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\CursoCSharp\bin\Debug\CursoCSharp.pdb
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\CursoCSharp\obj\Debug\CursoCSharp.csproj.AssemblyReference.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\CursoCSharp\obj\Debug\CursoCSharp.csproj.CoreCompileInputs.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\CursoCSharp\obj\Debug\CursoCSharp.exe
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\CursoCSharp\obj\Debug\CursoCSharp.pdb

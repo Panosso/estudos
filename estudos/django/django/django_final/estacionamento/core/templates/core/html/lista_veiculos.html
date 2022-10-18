@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo_pagina }}</title>
+    
+</head>
+<body>
+
+    <h1>Lista total de veiculos</h1>
+
+    <ul>
+        {% for v in veiculos %}
+            <li>
+                <a href="{% url 'att_veiculo' v.id%}">{{ v.id }}</a> - {{ v.marca }} - {{ v.cor }} - {{ v.proprietario.nome }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!--
+        No action desse form é onde colocamos qual url ele vai chamar
+         passando o atributo name que está em urls.py
+    -->
+    <form action="{% url 'veiculo_novo'%}" method="POST">
+        <!--Token necessário para evitar um ataque csrf-->
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Enviar</button>
+    </form>
+
+    <a href="{% url 'core_home' %}">Voltar ao menu</a>
+
+</body>
+</html>

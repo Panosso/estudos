@@ -1,0 +1,297 @@
+body{
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
+}
+
+/*
+* 
+* */
+
+@media screen and (max-width: 480px){
+
+    body{
+    
+        background: red;
+    
+    }
+    
+    .caixa, .conteudo-beneficios, mapa-conteudo, video {
+        width: auto;
+    
+    }
+
+}
+
+.video{
+
+    width: 560px;
+    text-align: center;
+    margin: 1em auto;
+
+}
+
+/*
+* Esse comando vai pegar todos as tags p que são filhos diretos de um main e pintar seu background de vermelho
+* Portanto um cód onde temos <main> --> <div> --> <p> nao será afetado.
+* */
+
+main > p {
+
+    background: red;
+
+}
+
+/*
+* Apenas o primeiro irmão da tag irá sofrer as alterações.
+* Nesse exemplo, apenas a PRIMEIRA tag p após a tag img ira ter a cor de fundo #00FFFF
+* */
+
+img + p {
+
+    background: #00FFFF;
+
+}
+
+/*
+* todas as tag's irmãs da tag irá sofrer as alterações.
+* Nesse exemplo, todas as tag's p após a tag img ira ter a cor de fundo amarelo
+* */
+
+img ~ p{
+
+    background: yellow;
+
+}
+
+/*
+* todas as tag's irmãs iram sofrer as alterações exceto a tag dentro do ().
+* Nesse exemplo, todas as tag's que tem o id=missao não sefreram nenhuma modificação apenas as outras tag p
+* */
+
+.principal p:not(#missao){
+
+    background: orange;
+
+}
+
+main{
+
+    width:940px;
+    margin: 0 auto;
+
+}
+
+/*
+* Radius gradiente
+* Linear gradient
+* Nos parametros é passada a rotação que o gradiente irá trabalhar, a cor e a porcentagem do gradiente
+* que irá ter essa cor e as cores que ele vai passar até o final
+* Nesse exemplo temos: 90º de rotação, 50% da class map será laranja e entao os outros 50% serão divididos para as cores azul e vermelho
+* */
+
+.map{
+    text-align: center;
+    padding: 3em 0;
+    background: linear-gradient(90deg, orange 50%, blue, red);
+}
+
+.map p{
+    margin: 0 0 2em 0;
+    text-align: center;
+}
+
+.mapa-conteudo{
+    width: 940px;
+    margin: 0 auto;
+}
+
+.caixa {
+    width: 940px;
+    position: relative;
+    margin: 0 auto 0 auto;
+}
+
+header{
+    background: #BBBBBB;
+    padding: 20px 0;
+}
+
+.titulo_centralizado{
+    text-align: center;
+}
+
+.titulo_principal:first-letter {
+
+    font-weight: bold;
+    color: red;
+
+}
+
+.titulo_principal:before{
+
+    content: "[ ";
+
+}
+
+.titulo_principal:after{
+
+    content: " ]";
+
+}
+
+p:first-line {
+    
+    font-style: italic;
+    
+}
+
+/*
+* em: é o tamanho padrao da fonte, portanto 2em significa que o tamanha da fonte irá dobrar
+* text-shadow cria uma sombra no texto e ele recebe os parametros de deslocamento em X e Y e a cor.
+* */
+
+.titulo_principal{
+    text-align: center;
+    font-size: 2em;
+    margin: 0 0 1em 0;
+    clear: left;
+    color: rgb(254,9,9);
+    opacity: 0.3;
+    text-shadow: 2px 2px #FF0000;
+}
+
+.principal{
+    padding: 3em 0;
+    background: #FEFEFE;
+    width:940px;
+    margin: 0 auto;
+}
+
+.principal p{
+    margin: 0 0 1em 0;
+}
+
+.principal b{
+    font-weight: bold;
+}
+
+.principal em{
+    font-style: italic;
+}
+
+.banner{
+    width: 100%;
+}
+
+/*
+* Box-shadow: Recebe o deslocamento em X e Y, blur-radius, spread-radius, cor
+* um mesmo elemento pode ter mais de uma sombra com caracteristicas diferentes.
+* */
+
+.imagem-beneficios {
+    width: 60%;
+    opacity: 1;
+    transition: 400ms;
+    box-shadow: 10px 10px 27px 5px #000000, -10px -10px 27px 5px yellow, -20px 20px rgba(255, 0 ,0, 0.5);
+}
+
+.imagem-beneficios:hover {
+    opacity: 0.7;
+    
+}
+
+#missao {
+    color: #00BFFF;
+    background: #2F4F4F
+}
+
+.lista-beneficios {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+.beneficios{
+
+    padding: 3em 0;
+    background: #888888;
+    box-shadow: inset 0 0 30px #FF0000;
+}
+
+.conteudo-beneficios{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.itens{
+
+    line-height: 1.5;
+
+}
+
+.itens:before{
+    content: "★";
+}
+
+.itens:after{
+    content: "✫";
+}
+
+/*
+* First child, ele irá afetar apenas o primeiro filho da lista
+* Existe tambem o nth-child(numero) que afeta apenas o elemento que está na posicao do número
+* É possível fazer esse mesmo comando com 'n' elementos, por exemplo, para todos os pares ficaria nth-child(2n)
+* */
+
+.itens:first-child {
+    font-weight: bold;
+}
+
+footer{
+    background: url("imagens/bg.jpg");
+    text-align: center;
+    padding: 40px 0;
+    
+}
+
+nav a:hover{
+    background: #00FA9A;
+    color: #C014C2;
+    text-decoration: underline
+}
+
+nav ul{
+    position: absolute;
+    top: 75px;
+    right: 0
+}
+
+nav a{
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+nav li{
+    display: inline;
+    margin-left: 20px;
+}
+
+.copyright{
+
+    color: #FFFFFF;
+    font-size: 13px; 
+    margin: 20px 0;
+
+}
+
+.utensilios{
+    height: 120px;
+    float: left;
+    margin: 0 20px 20px 0;
+}

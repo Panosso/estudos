@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo_pagina }}</title>
+
+</head>
+<body>
+
+    <h1>Lista total de cadastros</h1>
+
+    <ul>
+        {% for p in pessoas %}
+            <li>
+                <a href="{% url 'att_pessoa' p.id %}">{{p.nome}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form action="{% url 'pessoas_novo' %}" method="POST">
+        {% csrf_token %}
+        <!-- Busco o form do views.py e organizo ele em forma de paragrafos <p> -->
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <a href="{% url 'core_home' %}">Voltar ao menu</a>
+
+</body>
+</html>

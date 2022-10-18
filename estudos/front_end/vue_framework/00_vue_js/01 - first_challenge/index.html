@@ -1,0 +1,29 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="challenge">
+    <!-- 1) Fill the <p> tag with your name and age usgin interpolation -->
+    <p> Hi my name is {{ name }} and i have {{ age }} years </p>
+    <p> {{ print_name_age() }} </p>
+    
+    <!-- 2) Show your age multiplied by 3 -->
+    <p> {{ age * 3 }}</p>
+    
+    <!-- 3) Print the return of a function with Math.random() -->
+    <p> {{ random_number() }}</p>
+    
+    <!-- 4) Search a google image and show, using a img tag and binding on "src" attribute -->
+    <div>
+        <img height="400" v-bind:src="image"
+        alt="DataH Image">
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!-- 5) Initialize the input with your name (use o atributo "value") -->
+    <div>
+        <input type="text" v-bind:value=name>
+    </div>
+</div>
+<script src="app.js"></script>

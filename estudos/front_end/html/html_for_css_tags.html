@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Testando CSS</title>
+    <meta name="generator" content="Geany 1.36" />
+    <meta charset="UTF-8">
+    <style = type="text/css">
+         h1{
+            background-color: white;
+         }
+         
+         strong{
+             color:blue;
+         }
+         
+    </style>
+
+    <link rel="stylesheet" href="../css/css_tag.css">
+
+    <style type="text/css">
+        h1:before{
+                content : "Meu";
+            }
+            
+        a.glossary:before{
+                content: " " url("icon.png")
+            }
+            
+        p.numbered:before{
+                content: counter(mynum) ": ";
+                counter-increment: mynum;
+            }
+            
+        span.numbered2:before{
+                content: counter(mynum2);
+                counter-increment: mynum2;
+            }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>
+        <strong style="color:red">C</strong>
+        <strong style="color:green">S</strong>
+        <strong>S</strong>
+    </h1>
+
+    <h6>Teste de paragrafo</h6>
+    
+    <h5 id="id_no_h5">Teste de paragrafo</h5>
+    
+    <h4 class="classe_no_h4">Teste de paragrafo</h4>
+    
+    <p disabled>Teste de paragrafo</p>
+
+    <p lang="es">Idioma da tela</p>
+
+    <input type="button" value="Css Test Input">
+
+    <p class="teste_Key_teste">Contem a palavra key</p>
+    <p class="teste_key">Termina com key</p>
+    <p class="key_teste">Começa com key</p>
+    <p class="key">Exatamente a palavra key</p>
+
+    <p title="ExEmpLe_com_operadores">Teste com titulo</p>
+    
+    <a href="https://www.google.com.br" target="_blank"> Vai pro Google</a>
+
+    <ul>
+        <li>Primeiro</li>
+        <li style="color:white">Segundo</li>
+        <li>Ultimo</li>
+    </ul>
+
+    <p class="paragrafo_classe">Filtro de tag com class</p>
+
+    <section class="section_class">
+        <p>
+            aaaa<br>
+            duosahudsapouhudposa
+        </p>
+        <p>aaaa</p>
+        <p>aaaa</p>
+        <p>aaaa</p>
+    </section>
+    
+    <p id="teste_id">paragrafo com id</p>
+    
+    <p class="numbered">Contado</p>
+    <p class="numbered">Contado</p>
+    <p class="numbered">Contado</p>
+    <p class="numbered">Contado</p>
+    <p class="numbered">Contado</p>
+    
+    <p title="ExEmpLe_com_operadores">Ultimo paragrafo</p>
+
+    <ul>
+        <li>Teste</li>
+        <li>Teste</li>
+        <li>Teste</li>
+    </ul>
+    
+    <ol>
+        <li>Teste</li>
+        <li>Teste</li>
+        <li>Teste</li>
+    </ol>
+
+    <div class="div1">
+        <h2>Aquario 1</h2>
+    </div>
+
+    <div class="div2">
+        <h2>Aquario 2</h2>
+    </div>
+
+    <div id="text_indent">Teste de identação</div>
+
+    <table>
+        <thead>
+            <caption>Meses</caption>
+            <tr>
+                <td>Mes</td>
+                <td>Ano</td>
+            </tr>
+        
+        </thead>
+        
+        <tbody>
+            
+            <tr>
+                <td>Maio</td>
+                <td>2020</td>
+            </tr>
+            
+            <tr>
+                <td>Junho</td>
+                <td>2021</td>
+            </tr>
+            
+        </tbody>
+        
+    </table>
+
+    <br>
+    <br>
+    
+    <div class="tooltip">Hover over me
+      <span class="tooltiptext">Tooltip text</span>
+    </div>
+
+    <br>
+    <br>
+
+    <span id="borderimg1">Aqui tem uma imagem borda</span>
+
+    <br>
+    <br>
+
+    <div id="div1"></div>
+
+    <br>
+    <br>
+
+    <img src="../imagens/banner.jpg" width="30%" height="30%">
+
+    <br>
+    <br>
+
+    <div class="dropdown">
+        <button class="dropbt">Drop Down Menu</button>
+        <div class="dropdown_content">
+            <a href="#">Link <span class="numbered2"></span></a>
+            <a href="#">Link <span class="numbered2"></span></a>
+            <a href="#">Link <span class="numbered2"></span></a>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

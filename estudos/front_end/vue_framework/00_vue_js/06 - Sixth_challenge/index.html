@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Matador de Monstro Dev</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="panel scores">
+            <div class="score">
+                <h1>Player: </h1>
+                <div class="life-bar">
+                    <div class="life"></div>
+                </div>
+                <div>{{ playerLife }} %</div>
+            </div>
+            <div class="score">
+                <h1>Monster: </h1>
+                <div class="life-bar">
+                    <div class="life"></div>
+                </div>
+                <div>{{ monsterLife }} %</div>
+            </div>
+        </div>
+
+        <div class="panel result" v-if="gameOver">
+            <div class="result">{{ result }}</div>
+            <div class="result" v-if="gameOver">
+                <button @click="start_game">New Round</button>
+            </div>
+        </div>
+
+        <div v-if="!gameOver" class="panel buttons">
+            <div class="start" v-if=startGame>
+                <button @click="startGame = !startGame"> Start the duel</button>
+            </div>
+            <div v-else class="actions">
+                <button @click="attack">Attack</button>
+                <button @click="super_attack">Super Attack</button>
+                <button @click="heal">Heal</button>
+                <button @click="give_up = !give_up">Give Up</button>
+            </div>
+        </div>
+
+        <div class="panel logs" v-if="gameLog">
+            <ul v-for="l in monsterLog">
+                <li>{{ l }}</li>
+            </ul>
+            <ul v-for="l in playerLog">
+                <li>{{ l }}</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

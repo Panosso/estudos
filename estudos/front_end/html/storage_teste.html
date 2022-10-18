@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>Storage Teste</title>
+<meta name="generator" content="Geany 1.36" />
+
+<script type="text/javascript">
+
+    function salva(){
+        if(typeof(Storage) !== "undefined")
+        {
+            // Store
+            localStorage.setItem("lastname", "Panosso");
+            
+            alert("Salvei o valor");
+        }
+        else
+        {
+            alert("Seu navegador não suporta Web Storage")
+        }
+    }
+    
+    function ler(){
+        if(typeof(Storage) !== "undefined")
+        {
+            // Store
+            document.getElementById("resultado").innerHTML = localStorage.getItem("lastname");            
+        }
+
+        else
+        {
+            alert("Seu navegador não suporta Web Storage")
+        }
+    }
+    
+</script>
+
+</head>
+
+<body>
+
+    <div id="resultado"></div>
+
+        <button onclick="salva()">Salva</button>
+        <br>
+        <button onclick="ler()">Ler</button>
+        
+
+
+
+</body>
+
+</html>

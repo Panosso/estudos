@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Vue JS test</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 1.36" />
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- CDN for VUEX-->
+	<script src="https://unpkg.com/vuex"></script>
+	
+	<!-- production version, optimized for size and speed 
+	 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>-->
+
+	 <style>
+		 #app22{
+			 display: flex;
+			 justify-content: space-around;
+		 }
+
+		 .demo{
+			 width: 100px;
+			 height: 100px;
+			 background-color: gray;
+		 }
+
+		 .c1{
+			 background-color: red;
+		 }
+
+		 .c2{
+			 background-color: green;
+		 }
+
+		 .c3{
+			 background-color: blue;
+		 }
+
+		.rotate{
+			transform: rotate(45deg);
+		}
+
+	 </style>
+	
+</head>
+
+<body>
+
+	<!-- Reactiv, because he change in execution time -->
+	<!-- v-bind: É uma diretiva, ele lida com atributos html -->
+	<div id="app">
+		{{ message }}
+	</div>
+	
+	<div id="app2">
+		<span v-bind:title="message">
+			Hover your mouse on me, to see my dinamically bound title.
+		</span>
+	</div>
+	
+	<div id="app3">
+		<span v-if="tavendo"> Now you see me </span>
+	</div>
+	
+	<div id="app4">
+		<li v-for="item in list_itens">
+			{{item.text}}
+		</li>
+		<li v-for="p in products">
+			{{p.product_title}}
+		</li>
+	</div>
+	
+	<div id="app5">
+		<p>{{ gona_invert }}</p>
+		<button v-on:click="reverseMessage">Reverse Message</button>
+	</div>
+	
+	<div id="app6">
+		<p>{{ input_message }}</p>
+		<input v-model="input_message">
+	</div>
+	
+	<div id="app7">
+		<!-- For this tags works, is required to be in a div with Vue instance.. -->
+		<ol>
+			<!-- This tag accept html props, events and more -->
+			<todo-item-component
+				v-for="grocery in groceryList"
+				v-bind:custom_attr="grocery"
+				v-bind:key="grocery.id">
+			</todo-item-component>
+
+		</ol>
+		<another-example />
+	</div>
+
+	<div id="app8">
+		{{mesga}}
+		<br>
+		<span v-once>This will never change: {{ mesga }}</span>
+	</div>
+	
+	<div id="app9">
+		<p>Using mustache: {{ rawHtml }}</p>
+		<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+	</div>
+	
+	<div id="app10">
+		<p>{{ foo }}</p>
+		<button v-on:click="foo= 'baz'">Change it</button>
+	</div>
+	
+	<div id="app11">
+		<p v-if="visibleList">Ola pessoal</p>
+		<ul>
+			<li v-for="i in items" v-bind:key="i.id" :title="i.name">{{ i.name }}</li>
+		</ul>
+	</div>
+
+	<div id="app12">
+		<p v-if='isVisible'>{{message}}</p>
+		<br>
+		<!-- dblclick = Double Click -->
+		<button v-on:dblclick="toogleMessage()">Show message</button>
+		<br>
+		<input type="text" name="message" id="message" v-model="message" placeholder="message">
+	</div>
+
+	<div id="app13">
+		{{ numero }}
+		<br>
+		<input v-model="numero" type="number">
+	</div>
+
+	<br>
+	<br>
+	<br>
+
+	<div id="app14">
+		<!-- v-on: Local onde sera tratado o evento, nesse exemplo o evento input -->
+		<input type="text" v-on:input="hello_stranger">
+		<p> {{ title }} </p>
+		<p> {{ hello_stranger() }} </p>
+		<a v-bind:href="link_ref">Google</a>
+	</div>	
+	
+	<div id="app15">
+		<p v-once> {{ title }} </p>
+		<p> {{ change_title() }}</p>
+	</div>
+
+	<div id="app16">
+		<p v-html=link_ref_html></p>
+	</div>
+
+
+	<div id="app17">
+		<p>{{ counter }}</p>
+		<button v-on:click="counter_add">Somar 1</button>
+	</div>
+
+	<br>
+	<br>
+
+	<div id="app18">
+		<h1>App18</h1>
+		<p>{{value}}</p>
+		<select v-on:change="value_change" id="values">
+			<option value="10">10</option>
+			<option value="20" selected>20</option>
+			<option value="30">30</option>
+			<option value="40">40</option>
+		</select>
+	</div>
+
+	<div id="app19">
+		<!-- This example will pass a param to a function, for pass a event to a function who has param
+				is necessarie pass the event variable as exactly $event -->
+		<br>
+		<br>
+		<p>{{value}}</p>
+		<button v-on:click="sum_number(5, $event)">Increase the value</button>
+		<br>
+		<br>
+		<!-- Even the event is not pass as param, the html will pass to Vue -->
+		<p v-on:mousemove="get_mouse_coordinate">Mouse: {{x}} and {{y}} 
+			<span v-on:mousemove="stop_propagation">STOP PROPAGATION</span></p>
+
+		<a v-on:click.prevent="" href="http://www.google.com.br">Google</a>
+		<br>
+		<br>
+		<!-- This event is gona called when the user press 'alt' and 'enter' -->
+		<input type="text" v-on:keyup.alt.enter="show_alert"/>
+	</div>
+
+	<div id="app20">
+		<p>{{ title }}</p>
+		<input v-model="title" />
+	</div>
+
+	<div id="app21">
+		<p>{{ counter }} | {{ counter2 }}</p>
+		<p>{{ results }}</p> 
+		<button v-on:click="increase">Clique aqui</button>
+		<button v-on:click="increase2">Clique aqui 2</button>
+	</div>
+
+	<div id="app22">
+		<!-- In this div, when the applyC1 is true, the :class will receive the class c1. -->
+		<div class="demo" :class="{c1: applyC1}" @click="applyC1 = !applyC1"></div>
+
+		<!-- In this div, when the applyC1 is true, the :class will receive the class c1.
+			and when applyC1 is false, the class will receive the class c2, because of computed prop
+			in app22 vue instance. -->
+		<div class="demo" :class="style1" @click="applyC1 = !applyC1"></div>
+		
+		<!-- On :class we can apply JS array, for put a lot of classes when is needed -->
+		<!-- In this example the Vue JS will check the 'applyRotate' variable and apply the class rotate
+		if the variable is true -->
+		<div class="demo" :class="[classCSS, {rotate: applyRotate}]"></div>
+		<hr>
+		<input type="text" v-model="classCSS">
+	</div>
+
+	<br>
+	<br>
+
+	<div id="app23">
+		<div class="demo" :style="{'background-color': color}"></div>
+		<div class="demo" :style="myStyle"></div>
+		<div class="demo"></div>
+		<hr>
+		<input type="text" v-model="color" > 
+		<input type="text" v-model="vueWidth" >
+		<input type="text" v-model="vueHeight" >
+	</div>
+	<br>
+	<br>
+
+	<div id="app24">
+		<!-- Using template, when the vue js process the data, he will add the tags inside template, into html, but the tag template doens't gone apper -->
+		<!-- When v-if is used, the html element gona be deleted from html, he's not gonna hide. -->
+		<template v-if="loged">
+			<p>Usuário logado: {{ name }}</p>
+			<p>Admin Profile</p>
+		</template>
+		<p v-else-if="anonimous">Anonimous User Logged</p>
+		<p v-else>Nenhum usuario logado</p>
+		<button @click="loged = !loged">{{ loged ? 'Log Out' : 'Log In'}}</button>
+		<input type="checkbox" v-model="anonimous" >
+		<!-- Diferent by v-if, the v-show just hide de html tag and don't make her desapper -->
+		<footer v-show="loged">
+			Dev for everybody who want!!
+		</footer>
+	</div>
+	
+	<br>
+	<br>
+	
+	<div id="app25">
+		<ul>
+			<!-- Create a atribute called teste -> v-bind:teste -->
+			<li v-for="color in colors" :teste="color">{{ color }}</li>
+		</ul>
+		<ul>
+			<!-- The v-for allways return a element in the list and we can make then return a element and one index-->
+			<!-- The key element is used to track the id and make the vue can render and find the element -->
+			<li v-for="(color, index) in colors" :teste="color" :key="index">{{index}} {{ color }}</li>
+		</ul>
+		<template v-for="(color, index) in colors">
+			<h1>{{ color }}</h1>
+			<p>{{ index }}</p>
+		</template>
+		<!-- Add a new element into list named colors -->
+		<button @click="colors.push('white')">Add white</button>
+		<ul>
+			<li v-for="p in people">
+				<div v-for="(status, key, index) in p" id="personStats">
+					{{ key }}: {{ status }} ({{ index }})
+				</div>
+				<hr>
+			</li>
+		</ul>
+		<hr>
+		<span v-for="n in 10">
+			<div> {{ n }} </div>
+		</span>
+	</div>
+
+	<br>
+	<br>
+	<div id="app26">
+		<p>{{ app }}</p>
+		<!-- I can create a lot of components, each of then with their status -->
+		<countercomponent></countercomponent>
+		<countercomponent></countercomponent>
+		<countercomponent></countercomponent>
+		<countercomponent></countercomponent>
+	</div>
+	
+	<br>
+	<br>
+
+	<div id="app27">
+		<p>{{ app }}</p>
+		<countercomponent2></countercomponent2>		
+		<countercomponent2></countercomponent2>		
+		<countercomponent2></countercomponent2>		
+		<countercomponent2></countercomponent2>		
+		<countercomponent2></countercomponent2>		
+	</div>
+
+	<br>
+	<br>
+
+	<div id="app28">
+		<p>{{ app }}</p>
+		<counter1></counter1>
+	</div>
+
+	<br>
+	<br>
+
+
+
+	<br>
+	<br>
+
+
+
+	<br>
+	<br>
+
+
+
+	<br>
+	<br>
+	
+	
+	
+	<br>
+	<br>
+
+
+
+	<br>
+	<br>
+	
+	
+	
+	<br>
+	<br>
+
+
+
+	<br>
+	<br>
+	
+	
+	
+	<br>
+	<br>
+
+
+
+	<br>
+	<br>
+	
+	
+	
+	<br>
+	<br>
+
+
+
+	<br>
+	<br>
+	<script src="index.js"></script>
+	
+</body>
+
+</html>

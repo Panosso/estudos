@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>Testando o Java Script</title>
+    <meta name="generator" content="Geany 1.36" />
+    <meta charset="UTF-8">
+
+    <script type="text/javascript">
+        
+        const PI = 3.14;
+        console.log(PI)
+        
+        
+        if (true){
+            var x = 5;
+        }
+    
+        console.log(x) // vai imprimir 5 pq x é uma variavel global, por estar declarada como var
+    
+        /*
+        if (true){
+            let y = 5;
+        }
+
+        console.log(y); // ReferenceError: y não está definido
+        */
+        
+        //array literal
+        var coffe = ['Utam', 'Ilha do ar', '3 corações']
+        console.log('Lista de cafés ' + coffe)
+        console.log('Café escolhido ' + coffe[1])
+
+        var vendas = "Toyota"
+        
+        function tipoCarro(nome){
+            if (nome == "Fiat"){
+                return nome;
+            }
+            else if (nome=="Uno")
+            {
+                return nome
+            }
+            else
+            {
+                return "Desgurpa não vendemos " + nome + ".;"
+            }
+        }
+    
+        var carro = {meuCarro: "Punto", getCarro: tipoCarro("Fiat"), especial: vendas}
+
+        console.log(carro.meuCarro);   // Punto
+        console.log(carro.getCarro);  // Fiat
+        console.log(carro.especial); // Toyota
+
+        var x = 0;
+        
+        while (x<3){
+            x++
+            console.log(x)
+            }
+
+        var fruta = "banana";
+        
+        switch (fruta){
+            case "maca":
+                console.log("Fruta é: "+ fruta);
+                break;
+                
+            case "morango":
+                console.log("Fruta é: "+ fruta);
+                break
+                
+            case "uva":
+                console.log("Fruta é: "+ fruta);
+                break
+                
+            case "banana":
+                console.log("Fruta é: "+ fruta);
+                break
+                
+            }
+
+        function getMonthName(mo) {
+          mo = mo - 1; // Ajusta o número do mês para o índice do array (1 = Jan, 12 = Dec)
+          var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul",
+                        "Aug","Sep","Oct","Nov","Dec"];
+          if (months[mo]) {
+            return months[mo];
+          } else {
+            throw "InvalidMonthNo"; //lança uma palavra-chave aqui usada.
+          }
+        }
+
+        try { // statements to try
+          monthName = getMonthName(myMonth); // função poderia lançar uma exceção
+        }
+        catch (e) {
+          monthName = "unknown";
+        } finally {
+            console.log("Finalizei o try catch")
+            }
+
+    var passo;
+    for (passo = 0; passo<5; passo++){
+        console.log('Ande um passo')
+        }
+
+    function howMany(selectObject) {
+      var numeroSelecionadas = 0;
+      for (var i = 0; i < selectObject.options.length; i++) {
+        if (selectObject.options[i].selected) {
+          numeroSelecionadas++;
+        }
+      }
+      return numeroSelecionadas;
+    }
+    /*
+    var btn = document.getElementById("btn");
+    btn.addEventListener("click", function(){
+      alert('Total de opções selecionadas: ' + howMany(document.selectForm.tipoMusica))
+    });
+    */
+    
+    function square(numero){
+        return numero * numero;
+        }
+    
+    var square2 = function(numero) {return numero * numero}
+    var x = square2(4)
+    
+    y = square(5)
+    
+    var num1 = 20, num2 = 30, nome = "Pedro";
+    
+    function multiplica(){
+            console.log(num1 * num2);
+        }
+    
+    multiplica();
+    
+    function getScore(){
+        var num1 = 2;
+        var num2 = 3;
+        
+        function add(){
+            console.log(nome + " scored " + (num1 + num2));
+            }
+        
+        return add();
+        
+        }
+    getScore()
+    
+    var criarPet = function(nome) {
+      var sex;
+
+      return {
+        setNome: function(newNome) {
+          nome = newNome;
+        },
+
+        getNome: function() {
+          return nome;
+        },
+
+        getSex: function() {
+          return sex;
+        },
+
+        setSex: function(newSex) {
+          if(typeof newSex == "string" && (newSex.toLowerCase() == "macho" || newSex.toLowerCase() == "fêmea")) {
+            sex = newSex;
+          }
+        }
+      }
+    }
+
+    var pet = criarPet("Vivie");
+    pet.getNome();                  // Vivie
+
+    pet.setNome("Oliver");
+    pet.setSex("macho");
+    pet.getSex();                   // macho
+    pet.getNome();                  // Oliver
+    
+    var a = [
+      "Hydrogen",
+      "Helium",
+      "Lithium",
+      "Beryl­lium"
+    ];
+
+    var a2 = a.map(function(s){ return s.length });
+
+    // parametro => return
+    var a3 = a.map( s => s.length );
+
+    
+    </script>
+
+</head>
+
+<body>
+
+    <form name="selectForm">
+      <p>
+        <label for="tipoMusica">Escolha alguns tipos de música, em seguida, clique no botão abaixo:</label>
+        <select id="tipoMusica" name="tipoMusica" multiple="multiple">
+          <option selected="selected">R&B</option>
+          <option>Jazz</option>
+          <option>Blues</option>
+          <option>New Age</option>
+          <option>Classico</option>
+          <option>Ópera</option>
+        </select>
+      </p>
+      <p><input id="btn" type="button" value="Quantos foram selecionados?" /></p>
+    </form>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,286 @@
+body{
+    background-color: black;
+
+    /*Alterando vários atributos da fonte.*/
+    font: 20px, "Comic Sans MS", cursive;
+    
+    counter-reset: mynum;
+    counter-reset: mynum2;
+}
+
+*{
+    font-family:sans-serif;
+}
+
+#id_no_h5{
+    color:pink;
+}
+
+.classe_no_h4{
+    color:green;
+}
+
+[disabled]{
+    color:grey;
+}
+
+[lang|=es]{
+    color:red;
+}
+
+[type="button"]{
+    background-color: blue;
+    color: white;
+}
+
+[class*="key"]{
+    color:red;
+}
+
+[class$=key]{
+    color:green;
+}
+
+[class^=key]{
+    color:orange;
+}
+
+[class~=key]{
+    color:blue;
+}
+
+[title*="ExEmpLe_com_operadores"]{
+    font-family: "Times New Roman", Times, serif;
+}
+
+a[href*="google"]{
+    font-size: 40px;
+}
+
+a[href*="google"]:hover{
+    font-size: 50px;
+}
+
+li:first-child, li:last-child{
+    color: yellow;
+}
+
+li:nth-child(2){
+    color: white;
+}
+
+/*Todos os ultimos elementos p de cada bloco serão afetados*/
+p:last-of-type{
+    font-size: 30px;
+    color: white;
+}
+
+/*Todas as tag's p que contiverem a class paragrafo_classe serão afetados.*/
+p.paragrafo_classe{
+    color:blue;
+}
+
+.section_class{
+    /*Existem 3 métodos para adicionar cor
+     * color: <nome_da_cor>
+     * color: #<código_hex_decimal>
+     * color: rgba(red, green, blue, transparente) valores de 0 a 255 e no transparente precisa ser valores entre 0 e 1, apenas a partir da versão 3 do css
+     * */
+    background-color: rgba(255,255,0, 0.4);
+}
+
+/*Pega a primeira linha de todos os elementos p*/
+p::first-line{
+    font-family: "Times New Roman", Times, serif;
+}
+
+p:nth-child(2){
+    color: white;
+}
+
+/*TODOS os elementos <p> que estiverem dentro da classe section_class seram afetados.*/
+.section_class > p{
+    font-size: 40px;
+}
+
+#teste_id{
+    color: pink;
+}
+
+ul{
+    list-style: disk;
+    
+    /*Para adicionar um icone para lista use o comando:
+     * list-style: url('icon.png');*/
+}
+
+ol{
+    list-style: lower-roman;
+    /*É possível colocar o list-style: disk mesmo em ol
+     * porém não é recomendado pela w3c*/
+}
+
+.numbered{
+    color: white;
+}
+
+.div1{
+    width: 300px;
+    height: 100px;
+    border: groove 10px red;
+    /*
+     * Nesse caso so padding será feito um padding de 10px para cima, baixo, esquer, direita
+     * */
+    padding: 10px;
+    background-color: green;
+    float: right;
+}
+
+
+.div2{
+    width: 300px;
+    height: 100px;
+    border: ridge 10px;
+    border-color: green;
+    background-color: red;
+    float: left;
+    padding: 10px;
+}
+
+#text_indent{
+    color: white;
+    text-indent:90px;
+}
+
+table{
+    background-color: blue;
+    border: solid 10px white;
+    margin-top: 200px;
+    clear: right;
+}
+
+/*
+ * Quando usamos o 'table td' estamos dizendo que todas as td que estão 
+ * dentro de uma table vão receber o css. E quando usamos o operador ','
+ * estamos dizendo que o grupo 'table tr' E o grupo 'table td' vão receber o mesmo valor.
+ * */
+table td, table tr{
+    color: white;
+}
+
+/*
+ * Nas tabelas os elemento table td tr e afins são irmão, portanto
+ * o css ja espera uma certaligação, porém o caption não faz parte dessa
+ * familia, logo é necessário informar ele com o '>'
+ * */
+table > caption{
+    color: blue;
+}
+
+.tooltip{
+
+    background-color: white;
+
+}
+
+.tooltip .tooltiptext {
+
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+img {
+    float: right;
+    opacity: 0.5;
+}
+
+img:hover {
+  opacity: 1.0;
+}
+
+.dropbt{
+    
+    background-color: purple;
+    color: orange;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.dropdown_content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
+}
+
+.dropdown_content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; 
+}
+
+.dropdown_content a:hover{
+    background-color: green;
+}
+
+.dropdown:hover .dropdown_content{
+    display: block;
+}
+
+#borderimg1 {
+    background-color: white;
+    color: black;
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: url(../imagens/border.png) 30 stretch;
+    position: relative;
+}
+
+#div1{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: realtive;
+    animation-name: exemplo;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-iteration-count: 3;
+    animation-direction: alternate;
+}
+
+@keyframe exemplo{
+    0%   {background-color: red}
+    25%  {background-color: yellow}
+    50%  {background-color: blue}
+    75%  {background-color: green}
+    100% {background-color: red}
+}
+
+/*
+ * Nesse exemplo eu consigo fazer um css diferente para cada tipo 
+ * de media, como celular, tv, tablet entre outros e tambem posso definir
+ * um ponto de inicio do css, por exemplo, se o navegador está com o tamanho
+ * de 480 ou menos, ele vai entrar nesse CSS.
+ * */
+@media screen (max-width: 400px){
+
+    body{
+    
+        background-color: red;
+    
+    }

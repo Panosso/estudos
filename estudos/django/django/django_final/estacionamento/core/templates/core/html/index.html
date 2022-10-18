@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %} {{ titulo }} {% endblock %}
+
+{% block main %}
+
+    <h1>{{ contexto.mensagem }}</h1>
+
+    <h2><a href="{% url 'pessoas' %}">Cadastro de pessoas</a></h2>
+
+    <br>
+    <br>
+
+    <h2><a href="{% url 'veiculos' %}">Cadastro de veiculos</a></h2>
+
+    <br>
+    <br>
+
+    <h2><a href="{% url 'parametros_gerais' %}">Cadastro de Parametros</a></h2>
+
+{% endblock %}

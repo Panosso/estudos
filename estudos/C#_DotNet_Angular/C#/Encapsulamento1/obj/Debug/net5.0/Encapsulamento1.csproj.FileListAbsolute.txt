@@ -1,0 +1,12 @@
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\bin\Debug\net5.0\Encapsulamento1.deps.json
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\bin\Debug\net5.0\Encapsulamento1.dll
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\bin\Debug\net5.0\ref\Encapsulamento1.dll
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\bin\Debug\net5.0\Encapsulamento1.pdb
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\Encapsulamento1.csproj.AssemblyReference.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\Encapsulamento1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\Encapsulamento1.AssemblyInfoInputs.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\Encapsulamento1.AssemblyInfo.cs
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\Encapsulamento1.csproj.CoreCompileInputs.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\Encapsulamento1.dll
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\ref\Encapsulamento1.dll
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento1\obj\Debug\net5.0\Encapsulamento1.pdb

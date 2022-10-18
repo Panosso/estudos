@@ -1,0 +1,21 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="challenge">
+    <!-- 1) Show a alert when the button was cliked -->
+    <div>
+        <button v-on:click="show_alert">Exibir Alerta</button>
+    </div>
+    
+    <!-- 2) Listen the 'keydown' event and store the data value-->
+    <div>
+        <input type="text" v-on:keydown="value = $event.target.value">
+        <p>{{ value }}</p>
+    </div>
+    
+    <!-- 3) Save the text in input into vale variable after press enter-->
+    <div>
+        <input type="text" v-on:keydown.enter="store_keydown_value">
+        <p>{{ value }}</p>
+    </div>
+</div>
+<script src="app.js"></script>

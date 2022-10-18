@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>{{ titulo_pagina }}</title>
+
+</head>
+<body>
+
+    <h1>Lista rotativa de veiculos</h1>
+
+    <ul>
+        {% for valor in rot_hora %}
+            <li>
+                <!--Caso não seja informado o valor do parametro, será passado o método __str__-->
+                {{valor.entrada}} - {{valor.saida}} - {{valor.vl_hora.valor_hora}} - {{valor.veiculo.proprietario.nome}}
+            </li>
+            <br>
+         {% endfor %}
+    </ul>
+
+    <form action="{% url 'mov_rot_hora' %}" method="POST">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="challenge">
+    <!-- 1) Show the on 'result' the text 'diference value' while the value is
+            diference than 37, this value is altered by buttons. 
+            When the value is equal to 37, show the text 'Value Equal'-->
+
+    <!-- 2) Watch the result and restart the 'value' to 0 after 5s (hint: setTimeout(..., 5000)-->
+
+    <div>
+        <p>Valor atual: {{ value }}</p>
+        <button @click="value += 5">Somar 5</button>
+        <button @click="value += 1">Somar 1</button>
+        <p>{{ result }}</p>
+    </div>
+
+</div>
+<script src="app.js"></script>

@@ -1,0 +1,9 @@
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\bin\Debug\netcoreapp3.1\Encapsulamento.deps.json
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\bin\Debug\netcoreapp3.1\Encapsulamento.dll
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\bin\Debug\netcoreapp3.1\Encapsulamento.pdb
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\obj\Debug\netcoreapp3.1\Encapsulamento.GeneratedMSBuildEditorConfig.editorconfig
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\obj\Debug\netcoreapp3.1\Encapsulamento.AssemblyInfoInputs.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\obj\Debug\netcoreapp3.1\Encapsulamento.AssemblyInfo.cs
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\obj\Debug\netcoreapp3.1\Encapsulamento.csproj.CoreCompileInputs.cache
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\obj\Debug\netcoreapp3.1\Encapsulamento.dll
+E:\Users\Cesar\Desktop\all_projects\estudos\C#_DotNet_Angular\C#\Encapsulamento\obj\Debug\netcoreapp3.1\Encapsulamento.pdb
