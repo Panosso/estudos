@@ -2,17 +2,18 @@
 
 <body>
 
-    <header class="main-header-container">
-        <div class="main-header container">
-            <h1>
-                <a href="/">
-                    <i class="fas fa-address-book">
-                        <span>Recipes {{name}}</span>
-                    </i>
-                </a>
-            </h1>
+    {% include 'partials/header.html' %}
+
+    <div class="search-container">
+
+        <div class="container">
+            <form action="" class='search-form'>
+                <input type="search" class='search-input' name='search' placeholder='Digite a pesquisa'>
+                <button type="enviar" class='search-button'><i class='fas fa-search'></i></button>
+            </form>
         </div>
-    </header>
+
+    </div>
 
 </body>
 
