@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # App que le nas pastas do django e procura uma pasta com o nome 'static'
     'django.contrib.staticfiles',
     'recipes'
 ]
