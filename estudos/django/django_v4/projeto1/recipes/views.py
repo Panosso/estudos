@@ -14,5 +14,6 @@ def index_page(request):
 def recipe_view(request, recipe_id):
     return render(request, 'recipes/templates/pages/recipe-view.html',
                   context={
-                      'recipe': make_recipe
+                      'recipe': make_recipe,
+                      'is_detail_page': True
                   })
