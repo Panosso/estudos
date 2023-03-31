@@ -7,7 +7,7 @@ from .utils.factory import make_recipe
 def index_page(request):
     return render(request, 'recipes/templates/pages/home.html',
                   context={
-                      'recipes': [make_recipe for _ in range(10)]
+                      'recipes': [make_recipe for _ in range(9)]
                   })
 
 

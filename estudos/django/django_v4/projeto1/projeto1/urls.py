@@ -24,7 +24,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('recipes/', include('recipes.urls')),
-    path('teste/', include('teste.urls')),
+    path('recipes/', include('recipes.urls', namespace='recipes')),
+    path('teste/', include('teste.urls', namespace='teste')),
     path('', views.index_page)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

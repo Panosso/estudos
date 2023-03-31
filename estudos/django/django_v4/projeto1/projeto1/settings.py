@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     # App que le nas pastas do django e procura uma pasta com o nome 'static'
     'django.contrib.staticfiles',
-    'recipes'
+    'recipes',
+    'teste'
 ]
 
 MIDDLEWARE = [
