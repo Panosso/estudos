@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=65)
+
+
 class Recipe(models.Model):
     # varchar
     title = models.CharField(max_length=65)
@@ -20,3 +24,5 @@ class Recipe(models.Model):
     is_published = models.BooleanField(default=False)
     # Define qual pasta vai colocar a imagem
     cover = models.ImageField(upload_to='recipes/cover/%Y/%m/%d/')
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True)
