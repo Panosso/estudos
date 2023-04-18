@@ -6,6 +6,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=65)
+    slug = models.SlugField(default='')
 
     # Com isso no admin do Django o nome que irá aparecer será o name da
     #   Class Category
