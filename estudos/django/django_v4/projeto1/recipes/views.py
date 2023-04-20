@@ -1,7 +1,8 @@
-from django.shortcuts import get_list_or_404, render
+from django.shortcuts import get_list_or_404, get_object_or_404, render
 
 from .models import Recipe
-from .utils.factory import make_recipe
+
+# from .utils.factory import make_recipe
 
 
 # Create your views here.
@@ -15,15 +16,24 @@ def index_page(request):
 
 
 def recipe_view(request, recipe_id):
+
+    recipe = Recipe.objects.filter(
+        pk=recipe_id,
+        is_published=True
+    ).first()
+
     return render(request, 'recipes/templates/pages/recipe-view.html',
                   context={
-                      'recipe': make_recipe,
+                      'recipe': recipe,
                       'is_detail_page': True
                   })
 
 
 def category(request, category_slug):
 
+    recipes = get_object_or_404(Recipe, pk=id, is_published=True,)
+
+    # Método que retorna uma lista ou um 404
     recipes = get_list_or_404(
         Recipe.objects.filter(
             category__slug=category_slug,
