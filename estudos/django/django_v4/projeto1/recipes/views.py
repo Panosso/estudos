@@ -1,4 +1,5 @@
-from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.shortcuts import (get_list_or_404, get_object_or_404,  # noqa: F401
+                              render)
 
 from .models import Recipe
 
@@ -31,7 +32,10 @@ def recipe_view(request, recipe_id):
 
 def category(request, category_slug):
 
-    recipes = get_object_or_404(Recipe, pk=id, is_published=True,)
+    # Nesse método é necenssário que tenha apenas um retorno,
+    # caso contrário ocorrerá um erro.
+    # recipes = get_object_or_404(
+    #     Recipe, category__slug=category_slug, is_published=True,)
 
     # Método que retorna uma lista ou um 404
     recipes = get_list_or_404(
