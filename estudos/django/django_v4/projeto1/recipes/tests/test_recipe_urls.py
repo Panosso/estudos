@@ -1,7 +1,8 @@
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import resolve, reverse
 
-from .models import Category
+from ..models import Category
+from ..views import index_page
 
 
 # Create your tests here.
@@ -23,4 +24,4 @@ class RecipeURLsTest(TestCase):
 
             recipe_category = reverse('recipes:category', kwargs={
                 'category_slug': cat})
-            self.assertEqual(recipe_category, '/recipes/')
+            self.assertEqual(recipe_category, f'/recipes/category/{cat}')

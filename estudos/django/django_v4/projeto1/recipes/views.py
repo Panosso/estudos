@@ -16,6 +16,15 @@ def index_page(request):
                   })
 
 
+def index_page2(request):
+    # Faz um filtro buscando apenas as receitas publicadas.
+    recipes = Recipe.objects.filter(is_published=True).order_by('-id')
+    return render(request, 'recipes/templates/pages/home.html',
+                  context={
+                      'recipes': recipes
+                  })
+
+
 def recipe_view(request, recipe_id):
 
     recipe = Recipe.objects.filter(
