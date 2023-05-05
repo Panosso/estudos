@@ -1,8 +1,7 @@
 from django.test import TestCase
-from django.urls import resolve, reverse
+from django.urls import reverse
 
 from ..models import Category
-from ..views import index_page
 
 
 # Create your tests here.

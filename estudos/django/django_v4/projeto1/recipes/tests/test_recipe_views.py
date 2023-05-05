@@ -1,11 +1,14 @@
-from django.test import TestCase
 from django.urls import resolve, reverse
+from teste_recipe_base import RecipeTesteBase
 
-from ..models import Category, Recipe, User
+from ..models import Recipe
 from ..views import index_page
 
 
-class RecipeViewsTest(TestCase):
+class RecipeViewsTest(RecipeTesteBase):
+
+    def tearDown(self) -> None:
+        return super().tearDown()
 
     def test_recipe_home_views_functions_is_correct(self):
         view = resolve(reverse('recipes:recipes-home'))
@@ -26,11 +29,17 @@ class RecipeViewsTest(TestCase):
         self.assertTemplateUsed(response, 'recipes/templates/pages/home.html')
 
     def test_recipe_home_show_not_found_recipe(self):
+        Recipe.objects.delete(pk=1)
         response = self.client.get(reverse('recipes:recipes-home'))
         self.assertIn('<h1>Não encontrei nenhuma receita</h1>',
                       response.content.decode('utf-8'))
 
     def test_recipe_home_template_loads_recipes(self):
-        cat = Category.objects.create(name='Teste', slug='teste')
 
-        assert 1 == 1
+        response = self.client.get(reverse('recipes:recipes-home'))
+        content = response.content.decode('utf-8')
+        response_context_content = response.context['recipes']
+
+        self.assertIn('teste', content)
+        self.assertIn('12 m', content)
+        self.assertEqual(len(response_context_content), 1)

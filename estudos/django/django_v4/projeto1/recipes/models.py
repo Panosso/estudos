@@ -30,7 +30,8 @@ class Recipe(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
     # Define qual pasta vai colocar a imagem
-    cover = models.ImageField(upload_to='recipes/cover/%Y/%m/%d/')
+    cover = models.ImageField(
+        upload_to='recipes/cover/%Y/%m/%d/', blank=True, default='')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
 
