@@ -5,13 +5,13 @@ from ..models import Category, Recipe, User
 
 class RecipeTesteBase(TestCase):
     def setUp(self) -> None:
-        cat = self.make_cat()
+        cat = self.make_cat("Teste", "teste")
         # Faz algumas validações antes de salvar no banco
         cat.full_clean()
         # Salva a categoria no banco criado pelos tests
         cat.save()
 
-        author = self.make_author()
+        author = self.make_author("pedropanosso")
 
         author.full_clean()
         author.save()
@@ -23,14 +23,14 @@ class RecipeTesteBase(TestCase):
 
         return super().setUp()
 
-    def make_cat(self):
-        return Category.objects.create(name="Teste", slug="teste")
+    def make_cat(self, name, slug):
+        return Category.objects.create(name=name, slug=slug)
 
-    def make_author(self):
+    def make_author(self, username):
         return User.objects.create_user(
             first_name="user",
             last_name="name",
-            username="username",
+            username=username,
             password="123456",
             email="username@gmail.com",
         )
