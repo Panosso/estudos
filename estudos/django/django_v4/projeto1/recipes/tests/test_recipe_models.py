@@ -67,3 +67,11 @@ class RecipeModelTest(RecipeTesteBase):
             recipe.preparation_steps_is_html,
             msg="Testando se o padrao do steps is html não é Falso",
         )
+
+    def test_recipe_string_representation(self):
+        self.recipe.title = "teste representation"
+        self.recipe.full_clean()
+        self.recipe.save()
+        self.assertEqual(
+            str(self.recipe), "teste representation", msg="Recipe string title precisa"
+        )
