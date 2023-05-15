@@ -6,7 +6,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=65)
-    slug = models.SlugField(default='')
+    slug = models.SlugField(default="")
 
     # Com isso no admin do Django o nome que irá aparecer será o name da
     #   Class Category
@@ -18,7 +18,7 @@ class Recipe(models.Model):
     # varchar
     title = models.CharField(max_length=65)
     description = models.CharField(max_length=165)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     preparation_time = models.IntegerField()
     preparation_time_unit = models.CharField(max_length=65)
     servings = models.IntegerField()
@@ -31,13 +31,13 @@ class Recipe(models.Model):
     is_published = models.BooleanField(default=False)
     # Define qual pasta vai colocar a imagem
     cover = models.ImageField(
-        upload_to='recipes/cover/%Y/%m/%d/', blank=True, default='')
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True)
-
-    author = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True
+        upload_to="recipes/cover/%Y/%m/%d/", blank=True, default=""
     )
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True
+    )  # noqa: E501
+
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self) -> str:
         return self.title

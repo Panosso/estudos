@@ -1,5 +1,6 @@
-from django.shortcuts import (get_list_or_404, get_object_or_404,  # noqa: F401
-                              render)
+from django.db.models import Q
+from django.http.response import Http404
+from django.shortcuts import get_list_or_404, render  # noqa: E501
 
 from .models import Recipe
 
@@ -9,38 +10,36 @@ from .models import Recipe
 # Create your views here.
 def index_page(request):
     # Faz um filtro buscando apenas as receitas publicadas.
-    recipes = Recipe.objects.filter(is_published=True).order_by('-id')
-    return render(request, 'recipes/templates/pages/home.html',
-                  context={
-                      'recipes': recipes
-                  })
+    recipes = Recipe.objects.filter(is_published=True).order_by("-id")
+    return render(
+        request,
+        "recipes/templates/pages/home.html",
+        context={"recipes": recipes},  # noqa: E501
+    )
 
 
 def index_page2(request):
     # Faz um filtro buscando apenas as receitas publicadas.
-    recipes = Recipe.objects.filter(is_published=True).order_by('-id')
-    return render(request, 'recipes/templates/pages/home.html',
-                  context={
-                      'recipes': recipes
-                  })
+    recipes = Recipe.objects.filter(is_published=True).order_by("-id")
+    return render(
+        request,
+        "recipes/templates/pages/home.html",
+        context={"recipes": recipes},  # noqa: E501
+    )
 
 
-def recipe_view(request, recipe_id):
+def recipe_view(request, recipe_slug):
+    recipe = Recipe.objects.filter(slug=recipe_slug, is_published=True).first()
 
-    recipe = Recipe.objects.filter(
-        pk=recipe_id,
-        is_published=True
-    ).first()
-
-    return render(request, 'recipes/templates/pages/recipe-view.html',
-                  context={
-                      'recipe': recipe,
-                      'is_detail_page': True
-                  })
+    return render(
+        request,
+        "recipes/templates/pages/recipe-view.html",
+        context={"recipe": recipe, "is_detail_page": True},
+    )
 
 
 def category(request, category_slug):
-
+    #
     # Nesse método é necenssário que tenha apenas um retorno,
     # caso contrário ocorrerá um erro.
     # recipes = get_object_or_404(
@@ -49,8 +48,11 @@ def category(request, category_slug):
     # Método que retorna uma lista ou um 404
     recipes = get_list_or_404(
         Recipe.objects.filter(
-            category__slug=category_slug,
-            is_published=True).order_by('-id'))
+            category__slug=category_slug, is_published=True
+        ).order_by(  # noqa: E501
+            "-id"
+        )
+    )
 
     category_name = recipes[0].category.name
 
@@ -81,8 +83,34 @@ def category(request, category_slug):
     #     'Not found'
     # )
 
-    return render(request, 'recipes/templates/pages/category.html',
-                  context={
-                      'recipes': recipes,
-                      'title': f'{category_name}'
-                  })
+    return render(
+        request,
+        "recipes/templates/pages/category.html",
+        context={"recipes": recipes, "title": f"{category_name}"},
+    )
+
+
+def search_view(request):
+    q = request.GET.get("q", "").strip()
+
+    # Utilizando o 'Q' é possível fazer um filtro onde
+    # será feita a pesquisa por um termo OR o outro, ao inves de ser AND
+    # como é o padrão
+    recipes = Recipe.objects.filter(
+        Q(title__icontains=q) | Q(description__icontains=q), is_published=True
+    ).order_by(
+        "-id"
+    )  # noqa: E501
+
+    if not q:
+        raise Http404()
+
+    return render(
+        request,
+        "recipes/templates/pages/search.html",
+        context={
+            "recipes": recipes,
+            "page_title": f'Search for "{q}" | ',
+            "search_term": f'"{q}"',
+        },  # noqa: E501
+    )

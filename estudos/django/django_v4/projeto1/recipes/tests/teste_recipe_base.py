@@ -41,7 +41,7 @@ class RecipeTesteBase(TestCase):
             author=author,
             title="teste",
             description="testetestetestetestetesteteste",
-            slug="teste",
+            slug="teste for no default",
             preparation_time="12",
             preparation_time_unit="m",
             servings="2",
