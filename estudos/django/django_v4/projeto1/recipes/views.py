@@ -1,20 +1,31 @@
+from django.contrib import messages
 from django.db.models import Q
 from django.http.response import Http404
 from django.shortcuts import get_list_or_404, render  # noqa: E501
 
 from .models import Recipe
+from .utils.pagination import make_pagination
 
 # from .utils.factory import make_recipe
+
+PER_PAGES = 9
 
 
 # Create your views here.
 def index_page(request):
     # Faz um filtro buscando apenas as receitas publicadas.
     recipes = Recipe.objects.filter(is_published=True).order_by("-id")
+
+    page_obj, pagination_range = make_pagination(request, recipes, PER_PAGES)
+
+    # Permite enviar mensagens como sucesso, alerta, info, warning e por ai vai
+    if request.GET.get("show"):
+        messages.success(request, "Deu certo os trem aqui")
+
     return render(
         request,
         "recipes/templates/pages/home.html",
-        context={"recipes": recipes},  # noqa: E501
+        context={"recipes": page_obj, "pages": pagination_range},  # noqa: E501
     )
 
 
@@ -54,6 +65,8 @@ def category(request, category_slug):
         )
     )
 
+    page_obj, pagination_range = make_pagination(request, recipes, PER_PAGES)
+
     category_name = recipes[0].category.name
 
     # # Retorno do 404 3 métodos;
@@ -86,7 +99,11 @@ def category(request, category_slug):
     return render(
         request,
         "recipes/templates/pages/category.html",
-        context={"recipes": recipes, "title": f"{category_name}"},
+        context={
+            "recipes": page_obj,
+            "title": f"{category_name}",
+            "pages": pagination_range,
+        },
     )
 
 
@@ -102,6 +119,10 @@ def search_view(request):
         "-id"
     )  # noqa: E501
 
+    print(recipes.query)
+
+    page_obj, pagination_range = make_pagination(request, recipes, PER_PAGES)
+
     if not q:
         raise Http404()
 
@@ -109,8 +130,10 @@ def search_view(request):
         request,
         "recipes/templates/pages/search.html",
         context={
-            "recipes": recipes,
             "page_title": f'Search for "{q}" | ',
             "search_term": f'"{q}"',
+            "recipes": page_obj,
+            "pages": pagination_range,
+            "additional_url_query": f"&q={q}",
         },  # noqa: E501
     )
