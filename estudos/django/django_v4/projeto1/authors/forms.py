@@ -2,13 +2,28 @@ from django import forms
 from django.contrib.auth.models import User
 
 
+def add_attr(field, attr_name, attr_val):
+    existing_attr = field.widget.attrs.get(attr_name, "")
+    field.widget.attrs[attr_name] = f"{existing_attr} {attr_val}".strip()
+
+
 class RegisterForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        add_attr(self.fields["username"], "placeholder", "Digite seu username")
+
+    # Podemos criar campos apenas para o formulário
+    # que não estejam no model,
+    # podemos tambem podemos sobreescrever um campo
+    password2 = forms.CharField(
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "Digite novamente seu passwd"}
+        ),
+    )
+
     # Classe que passa metadados para o formulario
     class Meta:
-        # Podemos criar campos apenas para o formulário
-        # que não estejam no model
-        password2 = forms.CharField(required=True)
-
         model = User
         # Se colocar '__all__' é possível editar todos os campos do model
         fields = [
