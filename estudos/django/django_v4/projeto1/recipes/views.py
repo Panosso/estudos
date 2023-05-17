@@ -1,4 +1,4 @@
-from django.contrib import messages
+# from django.contrib import messages
 from django.db.models import Q
 from django.http.response import Http404
 from django.shortcuts import get_list_or_404, render  # noqa: E501
@@ -19,8 +19,7 @@ def index_page(request):
     page_obj, pagination_range = make_pagination(request, recipes, PER_PAGES)
 
     # Permite enviar mensagens como sucesso, alerta, info, warning e por ai vai
-    if request.GET.get("show"):
-        messages.success(request, "Deu certo os trem aqui")
+    # messages.success(request, "Deu certo os trem aqui")
 
     return render(
         request,

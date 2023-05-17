@@ -16,6 +16,7 @@ Including another URLconf
 
 from django.conf import settings
 from django.conf.urls.static import static
+
 # Não usar esses 2 imports acima em produção.
 from django.contrib import admin
 from django.urls import include, path
@@ -23,10 +24,11 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('recipes/', include('recipes.urls', namespace='recipes')),
-    path('teste/', include('teste.urls', namespace='teste')),
-    path('', views.index_page)
+    path("admin/", admin.site.urls),
+    path("recipes/", include("recipes.urls", namespace="recipes")),
+    path("teste/", include("teste.urls", namespace="teste")),
+    path("authors/", include("authors.urls", namespace="authors")),
+    path("", views.index_page),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
