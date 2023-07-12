@@ -34,15 +34,27 @@ class RegisterForm(forms.ModelForm):
     # o que precisar, como passwd, email e afins
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # add_placeholder(self.fields["username"], "Your username")
         add_placeholder(self.fields["username"], "Your username")
         add_placeholder(self.fields["email"], "Your e-mail")
         add_placeholder(self.fields["first_name"], "Ex.: John")
         add_placeholder(self.fields["last_name"], "Ex.: Doe")
-        add_attr(self.fields["username"], "css", "a-css-class")
+        add_placeholder(self.fields["password"], "Type your password")
+        add_placeholder(self.fields["password2"], "Repeat your password")
 
+    first_name = forms.CharField(
+        error_messages={"required": "Write your first name"}, label="First name"
+    )
+    last_name = forms.CharField(
+        error_messages={"required": "Write your last name"}, label="Last name"
+    )
+    email = forms.EmailField(
+        error_messages={"required": "E-mail is required"},
+        label="E-mail",
+        help_text="The e-mail must be valid.",
+    )
     password = forms.CharField(
-        required=True,
-        widget=forms.PasswordInput(attrs={"placeholder": "Your password"}),
+        widget=forms.PasswordInput(),
         error_messages={"required": "Password must not be empty"},
         help_text=(
             "Password must have at least one uppercase letter, "
@@ -50,16 +62,16 @@ class RegisterForm(forms.ModelForm):
             "at least 8 characters."
         ),
         validators=[strong_passwd],
+        label="Password",
     )
 
     # Podemos criar campos apenas para o formulário
     # que não estejam no model,
     # podemos tambem podemos sobreescrever um campo
     password2 = forms.CharField(
-        required=True,
-        widget=forms.PasswordInput(
-            attrs={"placeholder": "Digite novamente seu passwd"}
-        ),
+        widget=forms.PasswordInput(),
+        label="Password2",
+        error_messages={"required": "Please, repeat your password"},
     )
 
     # Classe que passa metadados para o formulario
@@ -110,31 +122,34 @@ class RegisterForm(forms.ModelForm):
         # clean_<nome_do_campo>
         def clean_email(self):
             email = self.cleaned_data.get("email", "")
-            existe = User.objects.filter(email=email).exists()
+            exists = User.objects.filter(email=email).exists()
 
-            if existe:
-                raise ValidationError("Ja está sendo usado", code="invalid")
+            if exists:
+                raise ValidationError(
+                    "User e-mail is already in use",
+                    code="invalid",
+                )
 
             return email
 
-        def clean_password(self):
-            # self.data retorna o valor do campo cru, ou seja,
-            # retorna o valor do jeito que ele vem do form
+        # def clean_password(self):
+        #     # self.data retorna o valor do campo cru, ou seja,
+        #     # retorna o valor do jeito que ele vem do form
 
-            # self.cleaned_data retorna um dicionário, e nele
-            # podemos pegar o valor atraves do get
-            # e esse valor ja vem limpo pra gente.
-            data = self.cleaned_data.get("password")
+        #     # self.cleaned_data retorna um dicionário, e nele
+        #     # podemos pegar o valor atraves do get
+        #     # e esse valor ja vem limpo pra gente.
+        #     data = self.cleaned_data.get("password")
 
-            # Exemplo de uma validação
-            if "atencao" in data:
-                raise ValidationError(
-                    "Não digite %(value)s na senha",
-                    code="Inválido, presta mais atencao",
-                    params={"value": "atenção"},
-                )
+        #     # Exemplo de uma validação
+        #     if "atencao" in data:
+        #         raise ValidationError(
+        #             "Não digite %(value)s na senha",
+        #             code="Inválido, presta mais atencao",
+        #             params={"value": "atenção"},
+        #         )
 
-            return data
+        #     return data
 
         def clean(self):
             # Quando chamamos o super da classe
@@ -160,3 +175,20 @@ class RegisterForm(forms.ModelForm):
                         ],
                     }
                 )  # noqa: 501
+
+
+class LoginForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        add_placeholder(self.fields["username"], "Digite seu login")
+        add_placeholder(self.fields["password"], "Digite sua senha")
+
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "password",
+        ]
