@@ -1,0 +1,40 @@
+version: '3.8'
+
+services: #definindo os serviços
+
+  frontend: #Nome de uma parte do serviço
+    depends_on: #indica alguma dependencia que o container pode ter
+      - backend
+    build: ./frontend #Indica para o docker-compose, onde que ele vai procurar o arquivo Docker do serviço
+    ports: # Indica as portas que serão abertas para esse container
+      - 3000:3000 # Porta host:Posta Container
+
+  backend:
+    depends_on:
+      - db
+    build: ./backend
+    ports:
+      - 3001:3001
+    environment: #Variaveis do container
+      DB_URL: mongodb://db/vidly
+    command: ./docker-entrypoint.sh #Executa um comando, nesse exemplo um shell
+
+  db:
+    image: mongo:4.0-xenial # Imagem que será carregada do docker cloud, ou seja, imagem que é carregada no FROM de um Dockerfile
+    ports:
+      - 27017:27013
+    volumes: #Qual volume será carregado.
+      - vidly:/data/db # Informar o nome do volume e onde ele será armazenado.
+      - teste:/data/teste1
+
+  teste_volume:
+
+    image: mongo:4.0-xenial
+    ports:
+      - 2223:2223
+    volumes:
+      - teste:/data/teste1
+
+volumes: #Cria um volume
+  vidly: #Nome para o volume criado
+  teste:
