@@ -23,7 +23,7 @@ class Empregado(models.Model):
     idade = models.IntegerField(blank=False, null=False)
     salario = models.DecimalField(max_digits=10, decimal_places=2)
     email = models.EmailField()
-    cpf = models.OneToOneField(CPF, null=True, blank=True)
+    cpf = models.OneToOneField(CPF, null=True, blank=True, on_delete=models.CASCADE)
     departamento = models.ManyToManyField(Departamento, blank=True)
     foto = models.ImageField(upload_to='cliente_foto')
 
@@ -34,7 +34,7 @@ class Empregado(models.Model):
 class Telefone(models.Model):
     numero = models.CharField(max_length=20)
     descricao = models.CharField(max_length=1000)
-    cliente = models.ForeignKey(Empregado)
+    cliente = models.ForeignKey(Empregado, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.numero} - {self.descricao}'
