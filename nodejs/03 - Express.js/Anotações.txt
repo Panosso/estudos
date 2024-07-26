@@ -4,4 +4,8 @@ Express.js
 
     npm (node package manager) - Usado para criar projetos em node e para baixar bibliotecas e frameworks nodes, semelhante ao pip em python
 
-    iniciando o projeto com o npm: npm init
+    iniciando o projeto com o npm: npm init, será criado o 'package.json' que é um arquivo que explica tudo que possui no seu projeto
+
+    Utilizando nodemon, modulo responsavel por iniciar e reiniciar o servidor sempre que uma modificação for detectada, instalando o nodemon, com a opção -g a biblioteca será instala globalmente no PC:
+
+        npm install nodemon -g

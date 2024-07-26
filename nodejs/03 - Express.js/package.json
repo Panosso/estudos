@@ -1,15 +1,14 @@
 {
-  "dependencies": {
-    "express": "^4.19.2"
-  },
   "name": "03---express",
   "version": "1.0.0",
-  "description": "Iniciando com express",
+  "description": "Primeiro projeto Express",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
