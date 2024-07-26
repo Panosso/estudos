@@ -1,0 +1,7 @@
+Express.js
+
+    É um framewrok para desenvolvimento web backend com o NodeJs
+
+    npm (node package manager) - Usado para criar projetos em node e para baixar bibliotecas e frameworks nodes, semelhante ao pip em python
+
+    iniciando o projeto com o npm: npm init
