@@ -1,0 +1,11 @@
+EJS --> Embedded JavaScript, é um semelhante ao Jinja. Responsável por desenhar os arquivos HTML
+
+O express utiliza como padrao, uma pasta com o nome views
+
+Arquivos com a extenção ejs, são html porém serão processados com o ejs
+
+Como funciona o forEach:
+
+    produtos.forEach(function(produto){código JavaScript})
+
+    Para cada item dentro do array produtos, será aplicada a função que está dentro dos ()
