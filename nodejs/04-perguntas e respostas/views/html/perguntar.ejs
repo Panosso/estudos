@@ -1,8 +1,8 @@
-<%- include ('partials/header.ejs'); %>
+<%- include ('../partials/header.ejs'); %>
 
 <body>
 
-    <%- include('partials/navbar.ejs');%>
+    <%- include('../partials/navbar.ejs');%>
 
     <div class="container">
 
@@ -12,12 +12,12 @@
             </div>
 
             <div class="card-body">
-                <form action="" method="post">
-                    <label for="titulo">Titulo:</label>
-                    <input type="text" placeholder="Titulo" class="form-control">
+                <form action="/salvarpergunta" method="post">
+                    <label for="titulo" >Titulo:</label>
+                    <input type="text" name="titulo" placeholder="Titulo" class="form-control">
                     <br>
                     <label for="descricao">Descrição:</label>
-                    <textarea class="form-control" placeholder="Descreva sua pergunta" id=""></textarea>
+                    <textarea class="form-control" name="descricao" placeholder="Descreva sua pergunta" id=""></textarea>
                     <br>
                     <button class="btn btn-success">Perguntar</button>
                 </form>
@@ -28,4 +28,4 @@
     </div>
 
 </body>
-<%- include('partialss/footer.ejs');%>
+<%- include('../partials/footer.ejs');%>
