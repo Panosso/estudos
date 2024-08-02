@@ -28,6 +28,7 @@ app.get('/perguntar', rotas.perguntar)
 app.get('/pergunta/:id', rotas.pergunta)
 
 app.post('/salvarpergunta', rotas.salvarpergunta)
+app.post('/salvarresposta', rotas.salvarresposta)
 
 
 

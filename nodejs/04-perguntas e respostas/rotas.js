@@ -1,5 +1,6 @@
 const { where } = require('sequelize')
 const Pergunta = require('./database/Pergunta.js')
+const Respostas = require('./database/Respostas.js')
 
 
 function raiz(req, res){
@@ -59,18 +60,46 @@ function salvarpergunta(req, res){
 
 function pergunta(req, res){
     var id = req.params.id;
+
     Pergunta.findOne({
         where: {id: id}
     }).then(pergunta => {
         if(pergunta != undefined){
-            res.render('html/pergunta', {
-                pergunta: pergunta
-            })
+
+            Respostas.findAll({
+                where: {perguntaId: id},
+                order: [['id', 'DESC']]
+            }).then(respostas => {
+                    res.render('html/pergunta', {
+                        pergunta: pergunta,
+                        respostas: respostas
+                    })
+                })
+
         }else{
+
             res.redirect("/")
+
         }
 
     })
+
+}
+
+function salvarresposta(req, res){
+
+    const corpo = req.body.corpo
+    console.log(corpo)
+    const perguntaId = req.body.perguntaId
+    console.log(perguntaId)
+
+    Respostas.create({
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(() => {
+        res.redirect('/pergunta/' + perguntaId)
+    })
+
 }
 
 module.exports = {
@@ -78,5 +107,6 @@ module.exports = {
     home,
     perguntar,
     salvarpergunta,
-    pergunta
+    pergunta,
+    salvarresposta
 }
