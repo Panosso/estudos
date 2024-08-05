@@ -9,3 +9,12 @@ Como funciona o forEach:
     produtos.forEach(function(produto){código JavaScript})
 
     Para cada item dentro do array produtos, será aplicada a função que está dentro dos ()
+
+pm2 é uma biblioteca que permite que o programa node rode em segundo plano, para isntala-lo:
+
+    // Instalação global
+    npm pm2 -g
+
+E apos a instalação, para iniciar o projeto usando o pm2, utilizar o comando:
+
+    pm2 start index.js
