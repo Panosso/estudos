@@ -18,14 +18,12 @@ function categoriaEditar(req, res){
     
     var id_cat = req.params.id_cat
 
-    console.log('Aqui')
-
     if(isNaN(id_cat)){
         res.redirect("/categorias/")
     }
 
     if (id_cat != undefined){
-        console.log('Aqui1')
+
         Category.findByPk(id_cat).then(categoria => {
             if (categoria != undefined){
 
@@ -39,8 +37,7 @@ function categoriaEditar(req, res){
         })
 
     } else {
-        console.log('Aqui2')
-
+        
         res.redirect("/categorias/")
     }
 
@@ -56,8 +53,6 @@ function categoriesSave(req, res){
 
     var title = req.body.title
     var id_cat = req.body.id_cat
-
-    console.log(id_cat)
 
     if(id_cat != undefined){
 
@@ -85,8 +80,6 @@ function categoriesSave(req, res){
 function categoriesDelete(req, res){
     
     var id = req.body.id;
-
-    console.log('Estou no delete')
 
     if(id != undefined){
 

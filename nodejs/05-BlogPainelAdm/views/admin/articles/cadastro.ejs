@@ -17,6 +17,13 @@
                 <br>
                 <textarea name="textbody" id="tinytextbody" class="form-control" placeholder="Digite o artigo"></textarea>
                 <br>
+                <label>Categorias</label>
+                <select name="category" id="" class="form-control">
+                    <% categories.forEach((category) => { %>
+                        <option value="<%= category.id %>"><%= category.title %></option>
+                    <% }) %>
+                </select>
+                <br>
                 <button type="submit" class="btn btn-success">Cadastrar</button>
             </form>
         </div>
@@ -31,6 +38,23 @@
 
 <script>
     tinymce.init({
-      selector: '#tinytextbody'
+        language: 'pt-BR',
+        selector: '#tinytextbody',
+        plugins: [
+                'advlist',
+                'autolink',
+                'link',
+                'image',
+                'lists',
+                'preview',
+                'searchreplace',
+                'wordcount',
+                'fullscreen',
+                'insertdatetime',
+                'media',
+                'save',
+                'table',
+                'emoticons',
+      ]
     });
   </script>
