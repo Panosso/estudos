@@ -5,7 +5,7 @@ const port = 4000
 
 const conn = require('./database/database.js')
 const categoriesController = require('./categories/CategoriesController.js')
-const articleController = require('./categories/CategoriesController.js')
+const articleController = require('./articles/ArticlesController.js')
 const rotas = require('./rotas.js')
 
 const Category = require("./categories/Category.js")
