@@ -1,0 +1,65 @@
+<%- include ('../../partials/header.ejs'); %>
+<body>
+
+    <%- include ('../../partials/navbar.ejs'); %>
+
+    <div class="container">
+        <hr>
+        <div class="card-header"> 
+        
+            <h1>Edição Artigos</h1> 
+        
+        </div>
+
+        <div class="card-body">
+            <form action="/artigos/save" method="post">
+                <input type="text" name="title" id="" class="form-control" placeholder="Defina o titulo da categoria" value="<%= article.title %>">
+                <br>
+                <textarea name="textbody" id="tinytextbody" class="form-control" placeholder="Digite o artigo"><%- article.body %></textarea>
+                <br>
+                <label>Categorias</label>
+                <select name="category" id="" class="form-control">
+                    <% categories.forEach((category) => { %>
+                        <% if (category.id == article.categoryId) { %>
+                        <option value="<%= category.id %>" selected><%= category.title %></option>
+                        <% } else {%>
+                        <option value="<%= category.id %>"><%= category.title %></option>
+                        <% } %>
+                    <% }) %>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-success">Editar</button>
+                <input type="hidden" name="id_art" id="" class="form-control" value="<%= article.id %>">
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+<%- include('../../partials/footer.ejs');%>
+
+<script src="https://cdn.tiny.cloud/1/2y6ifzq9ba57bjfeh3lszzk3la5hpf75c1jclpi3gon1q34d/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        language: 'pt-BR',
+        selector: '#tinytextbody',
+        plugins: [
+                'advlist',
+                'autolink',
+                'link',
+                'image',
+                'lists',
+                'preview',
+                'searchreplace',
+                'wordcount',
+                'fullscreen',
+                'insertdatetime',
+                'media',
+                'save',
+                'table',
+                'emoticons',
+      ]
+    });
+  </script>

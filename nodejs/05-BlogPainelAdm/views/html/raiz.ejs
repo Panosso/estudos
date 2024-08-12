@@ -1,8 +1,36 @@
 <%- include ('../partials/header.ejs'); %>
 <body>
 
-    <%- include('../partials/navbar.ejs'); %>
-    <h1>Ola Mundo!! Rota padrao</h1>
+    <%- include('../partials/raizNavbar.ejs'); %>
+    <div class="container">
+        <hr>
+        <div class="jumbotron">
+            <h1 class="diplay4">Bem vindo!!!</h1>
+            <p class="lead">Este é um simples blog de artigos.</p>
+            <hr class="my-4">
+            <p>Descrição detalhada aqui!</p>
+            <a href="#" role="button" class="btn btn-primary btn-lg">Leia Mais</a>
+        </div>
+        <hr>
+        <% articles.forEach(article => { %>
+            <div class="card">
+                <div class="card-header">
+                    <h2><%= article.title %></h2>
+                </div>
+                <div class="card-body">
+                    <a href="/articles/<%= article.slug %>" class="btn btn-success">Ler artigo</a>
+                </div>
+            </div>
+        <% }) %>
+
+        <div class="row">
+            <div class="col col-12">
+                <a href="/artigos/page/2" style="float: right">Next >>></a>
+            </div>
+        </div>
+        <hr>
+    </div>
+
 
 </body>
 

@@ -26,12 +26,15 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
+
+app.get("/", rotas.root)
+app.get("/articles/:articleSlug", rotas.articleSlug)
+app.get("/categorie/:categorieSlug", rotas.categorieSlug)
+
 //Com esse controler é utilizado para definir as rotas, nele é necessário um prefixo:
 //esse prefixo define o que precisa ser digitado antes de acessar o link
 app.use("/categorias", categoriesController)
 app.use("/artigos", articleController)
-
-app.use("/", rotas.root)
 
 
 app.listen(port, function(erro){
