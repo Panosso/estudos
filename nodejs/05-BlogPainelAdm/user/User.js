@@ -1,18 +1,17 @@
 const Sequelize = require('sequelize')
 const conn = require("../database/database.js")
 
-const Category = conn.connection.define('categories', {
-    title: {
+const User = conn.connection.define('users', {
+    email: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    slug: {
+    password: {
         type: Sequelize.STRING,
         allowNull: false
     }
 })
 
+User.sync({force: false});
 
-// Category.sync({force: true});
-
-module.exports = Category;
+module.exports = User;

@@ -65,8 +65,34 @@ function categorieSlug(req, res){
 
 }
 
+
+function userSession(req, res){
+
+    req.session.treinamento = 'Teste queda livre'
+    req.session.ano = 2019
+    req.session.email = 'pero@pero.com'
+    req.session.user = {
+        username: 'pedro',
+        senha: '123',
+        id: 10
+    }
+    res.send('Deu certo')
+
+}
+
+function userReader(req, res){
+    res.json({
+        treinamento: req.session.treinamento,
+        ano: req.session.ano,
+        email: req.session.email,
+        user: req.session.user
+    })
+}
+
 module.exports = {
     root,
     articleSlug,
-    categorieSlug
+    categorieSlug,
+    userSession,
+    userReader
 }
