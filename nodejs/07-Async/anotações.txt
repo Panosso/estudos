@@ -1,0 +1,11 @@
+Syncrona: Programação onde cada instruções será executada por vez, ou seja, quando uma linha termina de ser executada será feita a proxima função e por ai vai. Problema desse tipo de programação é que, ela bloqueia outras tarefas que nao tem relação e podem ser executadas simultaneamente
+
+Assincrona: Programa onde são executada várias tarefas ao mesmo tempo.
+
+    Callbacks: Liga a função a algum metodo assincrono, que assim que o metodo assincrono é concluido, essa função é chamada.
+
+    Promise: Promessa, que pode ser ou não cumprida.
+
+    Async/Await
+
+    
