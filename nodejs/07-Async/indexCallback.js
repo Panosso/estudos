@@ -42,3 +42,4 @@ enviarEmail("Ola seja bem vindo", "pedropanosso@gmail.com", (erro) => {
         
 })
 
+console.log('Fim do envio de e-mail')

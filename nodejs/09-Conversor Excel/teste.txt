@@ -1,5 +1,1 @@
-texto para teste
-que sera desenvolvido
-no novo
-modulo
-do curso
+Texto que será adicionado
