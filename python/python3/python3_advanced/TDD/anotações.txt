@@ -1,0 +1,29 @@
+Pytest:
+
+    Multiplus plugs, permitindo cada vez mais testes e altamente escalavel, excelente bilbioteca para trabalho.
+
+    Para utiliza-lo é necessário que na raiz do projeto, tenha uma pasta com o nome 'tests' e dentro do diretório, um arquivo python com o nome '__init__.py'
+
+    Given-When-Then: Contexto, ação e então, por exemplo:
+
+        Tenho dinheiro, preciso de algo novo, compro esse algo
+
+    Para poder rodar um test, dentro da pasta tests os arquivos py's PRECISAM iniciar com a palavra 'test_', exemplos:
+
+        test_calculo     --> Vai funcionar
+        test_parametros  --> Vai funcionar
+        testCabeludo     --> Não vai funcionar
+
+    E dentro dos arquivos .py, as funcoes precisam comecar com 'test'.
+
+        def test_quando_idade_receber_15_12_1991_deve_retorna_32 --> Vai funcionar
+        def O_test_que_nao_vai_rodar
+    
+    É possível criar o arquivo pytest.ini e nele configurar marks personalizados evitando assim o warnings.
+
+    Com a biblioteca pytest-cov, é possível saber o quanto do codigo está coberto com tests.
+
+        Exemplo: pytest --cov ou pytest --cov=<pasta>
+
+    É possível avisar ao pytest qual parte do código ele tem que ignorar a cobertura dos testes, com um aquivo de nome '.couveragerc', fazendo assim, metodos ou funcoes que começem com determinado nome, não sejam executados
+

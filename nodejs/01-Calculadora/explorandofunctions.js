@@ -23,6 +23,8 @@ function hello(){
 
 //Arrow Function with parameter
 var goodbye = (last_goodbye) => 'So my friend this is my: ' + last_goodbye 
+//Arrow function with parameter can be create without ()
+var goodbye = last_goodbye => 'So my friend this is my: ' + last_goodbye 
 
 // That function it's the same as:
 function goodbye(last_goodbye){
@@ -48,4 +50,3 @@ function soma(a, b, myCallback){
 }
 
 soma(3, 4, callback_function)
-
