@@ -1,7 +1,13 @@
 from requests import get as rget
 from datetime import datetime
 from os import getenv
+from config import Config
 
+import logging
+
+
+logger = logging.getLogger('uvicorn.error')
+logger.setLevel(logging.DEBUG)
 
 class OpenWeatherClass:
 
@@ -10,17 +16,16 @@ class OpenWeatherClass:
         return -90 <= latitude <= 90 and -180 <= longitude <= 180
     
     @classmethod
-    def get_city_info(city_id, api_key, units='metric'):
+    def get_city_info(_, city_id: str, api_key: str, units='metric'):
 
         try:
 
             info = ''
-            api_base = f"https://api.openweathermap.org/data/2.5/weather?"
             city_id = f"id={city_id}"
             appid = f"&appid={api_key}"
             units = f"&units={units}"
 
-            request = api_base + city_id + units + appid
+            request = Config.BASE_URL_WEATHER+ '?' + city_id + units + appid
 
             response = rget(request)
 
@@ -36,8 +41,19 @@ class OpenWeatherClass:
 
             return info
 
-        print('info')
-        print(info)
-
         return info
     
+    @classmethod
+    def get_city_info_lat_lon(self, lat, lon):
+
+        # if self.check_lat_lon(lat, lon):
+        request = Config.BASE_URL_WEATHER.format(lat = lat, lon = lon, API_key = Config.OPENWEATHER_API_KEY)
+        logger.debug(request)
+        response = rget(request)
+
+        logger.debug(response)
+
+        if response.status_code == 200:
+            info = response.json()
+
+        logger.debug(info)

@@ -1,4 +1,3 @@
-# Open weather API: 1da566375b5c0306e294b682a45249b0
 import hashlib
 from tqdm import tqdm
 from time import sleep
@@ -13,12 +12,16 @@ import crud
 import models
 import schemas
 import utils
+import logging
 from database import SessionLocal, engine
 from openweather import OpenWeatherClass
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 now = datetime.now()
+
+logger = logging.getLogger('uvicorn.error')
+logger.setLevel(logging.DEBUG)
 
 def get_db():
     db = SessionLocal()
@@ -54,7 +57,6 @@ async def create_user(user: schemas.UserCreate,
 
     return responses.JSONResponse(content=res)
 
-
 @app.post("/save_info/")
 async def read_climate(user_id: int,
                  api_key: str,
@@ -62,6 +64,7 @@ async def read_climate(user_id: int,
                  db: Session = Depends(get_db)):
 
     user = crud.get_user_by_id(db, user_id)
+
     if user is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="User not found")
@@ -69,16 +72,18 @@ async def read_climate(user_id: int,
     json_response = {}
     jsons_list = []
 
+    logger
+
     cities_ids = q.replace(' ', '').split(',')
 
-    for i in tqdm(range (0, len(cities_ids)), desc="Loading..."):
+    for i in tqdm(range (0, len(cities_ids)), desc="Loading"):
 
-        city_id = cities_ids[i]
+        city_id123 = cities_ids[i]
 
-        location_info = OpenWeatherClass.get_city_info(city_id = city_id,
+        logger.debug(city_id123)
+
+        location_info = OpenWeatherClass.get_city_info(city_id = city_id123,
                                 api_key = api_key)
-
-
 
         if 'erro_cod' in location_info.keys():
 
@@ -117,6 +122,20 @@ async def get_user(user_email: str,
                             detail="User not found")
     
     return user
+
+@app.get('/city_info_lat_lon/')
+async def get_city_info_lat_lon(q: Union[str, None] = None,):
+    try:
+        
+        lat, lon = q.replace(' ', '').split(',')
+
+        info = OpenWeatherClass.get_city_info_lat_lon(lat, lon)
+        
+        return info
+
+    except Exception as e:
+        pass
+
 
 @app.get('/process_percentage/', response_model=schemas.OpenWeatherStoreJSON)
 def get_process_percentage():

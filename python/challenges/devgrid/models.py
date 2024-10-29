@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, JSON
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, JSON, Float
 from sqlalchemy.ext.declarative import declarative_base
 
 from database import Base
@@ -21,3 +21,8 @@ class OpenWeatherStoreJSON(Base):
     user_id = Column(Integer, ForeignKey("DG_Users.id"))
     request_date = Column(DateTime, nullable=False)
     openweather_json = Column(JSON, nullable=False)
+    temperature_celsius = Column(Float, nullable=False, default=0)
+
+class ProgressResponse(Base):
+    user_id = Column(Integer, ForeignKey("DG_Users.id"))
+    complete_percentage = Column(Float, nullable=False, default=0)

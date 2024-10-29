@@ -59,3 +59,6 @@ class TestClass:
         result = OpenWeatherClass.get_city_info(3451328, '1da566375b5c0306e294b682a45249b0', 'metric')
         
         assert waited_result == result
+
+    def test_get_city_info_lat_lon_with_minus21dot1775lat_minus47dot8137lon_return_rib_preto_info(self):
+        assert 1 == 2
