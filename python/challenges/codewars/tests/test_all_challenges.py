@@ -1,5 +1,7 @@
-from letter_value_excel_sheet import title_to_number
 from count_bits import count_bits
+from letter_value_excel_sheet import title_to_number
+from square_of_square import is_square
+from high_and_low import high_and_low
 
 class TestClass:
 
@@ -21,3 +23,17 @@ class TestClass:
         assert count_bits(9) == 2
         assert count_bits(10) == 2
         assert count_bits(15) == 4
+
+    def test_square_of_square(self):
+        assert is_square(-1) == False
+        assert is_square( 0) == True
+        assert is_square( 3) == False
+        assert is_square( 4) == True
+        assert is_square(25) == True
+        assert is_square(26) == False
+        assert is_square(36) == True
+
+    def test_high_and_low(self):
+        assert high_and_low("1 2 3 4 5") == "5 1"
+        assert high_and_low("1 2 -3 4 5") == "5 -3"
+        assert high_and_low("1 9 3 4 -5") == "9 -5" 
