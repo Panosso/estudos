@@ -28,12 +28,9 @@ async def coroutine_task_02():
         task = asyncio.ensure_future(coroutine_task(interaction))
         await task
 
-def main():
-    asyncio.run(coroutine_task_01())
+asyncio.run(coroutine_task_01())
 
-    # loop = asyncio.get_event_loop()
-    # loop.run_until_complete(coroutine_task_01())
-    # loop.close()
+# loop = asyncio.get_event_loop()
+# loop.run_until_complete(coroutine_task_01())
+# loop.close()
 
-if __name__ == '__main__':
-    main()
