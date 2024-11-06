@@ -2,6 +2,7 @@ from count_bits import count_bits
 from letter_value_excel_sheet import title_to_number
 from square_of_square import is_square
 from high_and_low import high_and_low
+from sum_digits import digital_root
 
 class TestClass:
 
@@ -37,3 +38,9 @@ class TestClass:
         assert high_and_low("1 2 3 4 5") == "5 1"
         assert high_and_low("1 2 -3 4 5") == "5 -3"
         assert high_and_low("1 9 3 4 -5") == "9 -5" 
+
+    def test_digital_root(self):
+        assert digital_root(16) == 7
+        assert digital_root(942) == 6
+        assert digital_root(132189) == 6
+        assert digital_root(493193) == 2

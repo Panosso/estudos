@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel, Json
+from pydantic import BaseModel, JsonValue
 
 
 class UserBase(BaseModel):
@@ -25,7 +25,7 @@ class OpenWeatherStoreJSONBase(BaseModel):
 
     user_id: int
     request_date: datetime
-    openweather_json: str
+    openweather_json: JsonValue
 
 
 class OpenWeatherStoreJSONCreate(OpenWeatherStoreJSONBase):

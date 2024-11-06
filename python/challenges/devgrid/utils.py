@@ -1,6 +1,7 @@
 import re
-from datetime import datetime, timezone
+import crud
 
+from datetime import datetime, timezone, timedelta
 
 def email_validator(email) -> bool:
 
@@ -8,14 +9,17 @@ def email_validator(email) -> bool:
 
     valid = re.match(r, email)
 
-    return not bool(valid)
+    return bool(valid)
 
-
-def convert_datetime_utc():
-    day = datetime.today().date().day
-    month = datetime.today().date().month
-    year = datetime.today().date().year
+def convert_datetime_utc(today = datetime.today().date()):
+    day = today.day
+    month = today.month
+    year = today.year
     dt = datetime(year, month, day)
     timestamp_utc = dt.replace(tzinfo=timezone.utc).timestamp()
 
     return timestamp_utc
+
+def is_not_authorized(user):
+
+    return False if user.is_loggin and user.date_to_log_active > (datetime.now()) else True
