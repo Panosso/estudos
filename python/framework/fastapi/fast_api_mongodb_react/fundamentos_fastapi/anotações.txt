@@ -1,0 +1,6 @@
+Uvicorn é um servidor para poder rodar o fastAPI, sendo assim, usando o comando:
+
+    uvicorn <nome do arquivo python sem o .py>:<nome da variavel que está instanciada com o FastAPI> --reload
+        exemplo: uvicorn api:app --reload
+    
+    O fastAPI possui uma rota padrao chamada /docs, que pega todas as rotas configuradas no fastAPI e cria um site para testa-las.

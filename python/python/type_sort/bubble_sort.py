@@ -1,16 +1,25 @@
-lista = [8,10,3,2,5,4,9,6]
+from random import randint
+import time
 
-def bubble_sort(lista):
-    n = len(lista)
+#starting time
+start = time.time()
+
+value_list = [randint(-1000, 1000) for _ in range(1000)]
+
+def bubble_sort(value_list):
+    n = len(value_list)
 
     for i in range(n):
 
         for j in range(0, n-i-1):
 
-            if lista[j] > lista[j+1]:
+            if value_list[j] > value_list[j+1]:
 
-                lista[j], lista[j+1] = lista[j+1], lista[j]
+                value_list[j], value_list[j+1] = value_list[j+1], value_list[j]
 
-    return lista
+    return value_list
 
-print(bubble_sort(lista))
+end = time.time()
+
+print("Execution time of the program is: ", end-start)
+print(f"List sorted: {bubble_sort(value_list)}")
