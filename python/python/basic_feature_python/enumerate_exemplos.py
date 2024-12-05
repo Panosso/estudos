@@ -1,8 +1,13 @@
-dic1 = {'a':1, 'b':2}
-dic2 = {'c':3, 'd':4}
+#syntax: enumerate(lista)
 
-#Combinando chave e valor dos 2 dic
-print(list(zip(dic1.items(), dic2.items())))
+lst = ['a', 'b', 'c']
 
-#Combinando valor dos 2 dic
-print(list(zip(dic1.values(), dic2.values())))
+#[(0, 'a'), (1, 'b'), (2, 'c')]
+print(list(enumerate(lst)))
+
+
+#0:a
+#1:b
+#2:c
+for number, item in enumerate(lst):
+    print(str(number) + ':' + str(item))

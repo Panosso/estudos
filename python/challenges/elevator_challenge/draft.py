@@ -1,27 +1,12 @@
-UP = 1
-DOWN = 2
+UP = 0
+DOWN = 1
+IDLE = 2
 
-dicta = {UP: set(), DOWN: set()}
+summon_demand = {UP: set(), DOWN: set()}
 
-a = [5, 2, 6, 3, 0]
+summon_demand[UP].add(123)
 
-demand = len(set([len(dicta[k]) for k in dicta]))
-
-print(demand)
-
-print(dicta[UP])
-
-dicta[UP] = set()
-
-dicta[UP].add(2222)
-dicta[UP].add(22222)
-dicta[UP].add(22322)
-dicta[UP].add(2222)
-dicta[UP].add(22522)
-dicta[UP] = set()
-print(any(dicta.values()))
-
-target_floors = []
-
-if target_floors:
-    print('Aqui')
+print(len(summon_demand[UP]))
+print(summon_demand[UP])
+print(type(summon_demand[UP]))
+print(type(summon_demand[UP]))

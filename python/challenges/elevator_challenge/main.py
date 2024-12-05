@@ -4,7 +4,6 @@
 # (indicating which floor they want to go to) as well as from passengers waiting on different floors (requesting the elevator to pick them up)
 
 import time
-import random
 
 UP = 0
 DOWN = 1
@@ -43,16 +42,18 @@ class Elevator:
 
         else:
 
-            if self.current_direction == UP:
-                self.target_floors = list(self.summon_demand[DOWN])
-                self.summon_demand[DOWN] = set()
+            if len(self.summon_demand[UP]) > 0 or len(self.summon_demand[DOWN]) > 0:
 
-            elif self.current_direction == DOWN:
-                self.target_floors = list(self.summon_demand[UP])
-                self.summon_demand[UP] = set()
+                if len(self.summon_demand[UP]) > 0:
+                    self.target_floors = [x for x in self.summon_demand[UP]]
+                    self.summon_demand[UP] = set()
 
-            if len(set([len(self.summon_demand[k]) for k in self.summon_demand])) > 1:
-                pass
+                else:
+                    self.target_floors = [x for x in self.summon_demand[UP]]
+                    self.summon_demand[DOWN] = set()
+
+            else:
+                self.current_direction = IDLE
 
     # this function gets triggered when a user presses on the buttons inside of
     # the elevator
@@ -90,14 +91,14 @@ if __name__ == "__main__":
     elevator.goto(6)  
     elevator.goto(10)  
 
-    for t in range(100):
-        print(f'current_floor: {elevator.current_floor} target_floor: {elevator.target}, All floors is: {elevator.target_floors}, current direction: {elevator.current_direction}, summons: {elevator.summon_demand}')
+    for t in range(1000):
+        print(f'current_floor: {elevator.current_floor} target_floor: {elevator.target}, All targert floors is: {elevator.target_floors}, current direction: {elevator.current_direction}, summons: {elevator.summon_demand}')
         elevator.next()
-        time.sleep(2)
+
 
         if t == 3:
-            print("User pressed down at floor 8")
-            elevator.summon(4, UP)
+            print("User pressed UP at floor 8")
+            elevator.summon(8, UP)
 
         if t == 11:
             print("User pressed UP at floor 3")
@@ -105,3 +106,29 @@ if __name__ == "__main__":
 
         if t == 13:
             elevator.goto(9)
+
+        if t == 20:
+            elevator.goto(23)
+
+        if t == 21:
+            print("User pressed UP at floor 1")
+            elevator.summon(1, UP)
+
+        if t == 23:
+            print("User pressed DOWN at floor 3")
+            elevator.summon(3, DOWN)
+
+        if t == 24:
+            print("User pressed DOWN at floor 5")
+            elevator.summon(5, DOWN)
+
+        if t == 25:
+            print("User pressed DOWN at floor 4")
+            elevator.summon(4, DOWN)
+
+        if t == 29:
+            print("User pressed UP at floor 6")
+            elevator.summon(6, UP)
+
+        if t == 150:
+            time.sleep(200)
