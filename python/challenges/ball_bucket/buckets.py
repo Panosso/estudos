@@ -19,6 +19,7 @@ def solution(buckets):
     
     else:
         for i in range(len(buckets)):
+            buckets_place = buckets[i]
             if i == 0:
                 if buckets[i] == '.' and buckets[i+1] == '.':
                     infos['safe_space'].append(i)
@@ -61,6 +62,6 @@ def solution(buckets):
 # print(solution('.B.B.B'))
 # print(solution('B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.BB'))
 # print(solution('B.B.BB.'))
-print(solution('...........B.B.B...........'))
+print(solution('....BBBBB..'))
 
 # print(solution('B.BBB.B......BBBBBBBBBBBBBBB.................'))
