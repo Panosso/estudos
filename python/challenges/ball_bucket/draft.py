@@ -1,9 +1,9 @@
-lista = [1,2,3,4,5]
+string1 = 'ABCDE FGHI'
 
-lista.append(12)
+string_list = [x for x in string1]
 
-print(lista[-1])
-
-lista.pop(-1)
-
-print(lista)
+print('\n')
+print('\n')
+print(string_list)
+string_list[1] = 'R'
+print(''.join(string_list))
