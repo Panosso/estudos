@@ -32,7 +32,7 @@ def create_acess_token(subject: Union[str, Any], expires_delta: int = None) -> s
     jwt_encoded = jwt.encode(
         info_jwt,
         settings.JWT_SECRET_KEY,
-        algorithm=settings.ALGORITH
+        algorithm=settings.ALGORITHM
     )
 
     return jwt_encoded
@@ -54,7 +54,7 @@ def create_refresh_token(subject: Union[str, Any], expires_delta: int = None) ->
     jwt_encoded = jwt.encode(
         info_jwt,
         settings.JWT_REFRESH_SECRET_KEY,
-        algorithm=settings.ALGORITH
+        algorithm=settings.ALGORITHM
     )
 
     return jwt_encoded

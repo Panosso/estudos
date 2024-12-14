@@ -5,10 +5,15 @@ from datetime import datetime
 from typing import Optional
 
 class User(Document):
+    #Gerado automaticamenteo pelo mongoDB
     user_id: UUID = Field(default_factory=uuid4)
+
+    #Dados obrigatórios
     username: Indexed(str, unique=True)
     email: Indexed(EmailStr, unique=True)
     hash_password: str
+
+    #Dados não obrigatórios
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     disabled: Optional[bool] = None

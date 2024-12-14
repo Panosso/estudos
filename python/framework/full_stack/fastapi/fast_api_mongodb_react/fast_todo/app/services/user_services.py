@@ -15,7 +15,7 @@ class UserService:
             hash_password=get_password(user.hash_password)
         )
 
-        await usuario.save()
+        await usuario.insert()
         return usuario
     
     @staticmethod
