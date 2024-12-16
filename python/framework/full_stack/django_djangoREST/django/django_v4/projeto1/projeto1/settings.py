@@ -59,11 +59,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "projeto1.urls"
 
+#local onde são informados os templates e onde buscar.
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            BASE_DIR / "static",
+            BASE_DIR / "base_templates",
+            BASE_DIR / "base_static",
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -125,11 +127,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "base_static/"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    BASE_DIR / "static" / "recipes",
+    BASE_DIR / "base_static",
+    # BASE_DIR / "base_static" / "recipes",
 ]
 
 MEDIA_URL = "/media/"
