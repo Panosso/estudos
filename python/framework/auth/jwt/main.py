@@ -28,6 +28,8 @@ def main():
         'sub': '4242',
         'name': 'Pedro',
         'nick': 'PedroPan',
+        'role': 'admin',
+        'Hehe': 'waka',
         'exp': datetime.now(timezone.utc) + timedelta(seconds=20)
     }
 
@@ -40,6 +42,7 @@ def main():
     if a:
         print('Deu certo')
 
+    print(token)
     print(a)
 
 if __name__ == '__main__':
