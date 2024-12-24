@@ -42,7 +42,8 @@ Esta API foi desenvolvida utilizando **FastAPI** e permite autenticação via JW
    ```
 
 4. Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
-   ```env
+   ```
+   touch .env
    SECRET_KEY=mysecretkey
    ALGORITHM=HS256
    ACCESS_TOKEN_EXPIRE_MINUTES=30
@@ -133,5 +134,7 @@ Você pode testar a API utilizando ferramentas como:
 ├── models.py        # Código com modelos que serão utilizados
 ├── utils.py         # Código com funções uteis para o sistema
 ├── requirements.txt # Dependências do projeto
+├── .env             # Variáveis de ambiente
+├── Dockerfile       # Configuração para conteinerização
 └── README.md        # Documentação do projeto
 ```
