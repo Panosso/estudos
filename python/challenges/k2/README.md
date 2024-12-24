@@ -44,11 +44,11 @@ Esta API foi desenvolvida utilizando **FastAPI** e permite autenticação via JW
 4. Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
    ```
    touch .env
-   SECRET_KEY=mysecretkey
-   ALGORITHM=HS256
-   ACCESS_TOKEN_EXPIRE_MINUTES=30
-   TOKEN_TYPE="Bearer"
-   API_V1_STR="https://localhost:8000"
+   echo "SECRET_KEY=mysecretkey" >> .env
+   echo "ALGORITHM=HS256" >> .env
+   echo "ACCESS_TOKEN_EXPIRE_MINUTES=30" >> .env
+   echo "TOKEN_TYPE="Bearer" >> .env
+   echo "API_V1_STR="https://localhost:8000" >> .env
    ```
 
 5. Inicie o servidor:
