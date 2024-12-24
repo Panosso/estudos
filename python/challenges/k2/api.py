@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from models import Token, TokenData
 from config import settings
+import database
 import utils
 import sqlite3
 

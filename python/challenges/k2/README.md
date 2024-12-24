@@ -29,19 +29,7 @@ Esta API foi desenvolvida utilizando **FastAPI** e permite autenticação via JW
    cd k2_challenge
    ```
 
-2. Crie um ambiente virtual (opcional, mas recomendado):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate # Linux/Mac
-   venv\Scripts\activate  # Windows
-   ```
-
-3. Instale as dependências:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+2. Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
    ```
    touch .env
    echo "SECRET_KEY=mysecretkey" >> .env
@@ -49,6 +37,19 @@ Esta API foi desenvolvida utilizando **FastAPI** e permite autenticação via JW
    echo "ACCESS_TOKEN_EXPIRE_MINUTES=30" >> .env
    echo "TOKEN_TYPE="Bearer" >> .env
    echo "API_V1_STR="https://localhost:8000" >> .env
+
+   ```
+
+3. Crie um ambiente virtual (opcional, mas recomendado):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate # Linux/Mac
+   venv\Scripts\activate  # Windows
+   ```
+
+4. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
    ```
 
 5. Inicie o servidor:
