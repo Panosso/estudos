@@ -35,8 +35,8 @@ Esta API foi desenvolvida utilizando **FastAPI** e permite autenticação via JW
    echo "SECRET_KEY=mysecretkey" >> .env
    echo "ALGORITHM=HS256" >> .env
    echo "ACCESS_TOKEN_EXPIRE_MINUTES=30" >> .env
-   echo "TOKEN_TYPE="Bearer" >> .env
-   echo "API_V1_STR="https://localhost:8000" >> .env
+   echo 'TOKEN_TYPE="Bearer"' >> .env
+   echo 'API_V1_STR="https://localhost:8000"' >> .env
 
    ```
 
