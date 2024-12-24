@@ -47,6 +47,8 @@ Esta API foi desenvolvida utilizando **FastAPI** e permite autenticação via JW
    SECRET_KEY=mysecretkey
    ALGORITHM=HS256
    ACCESS_TOKEN_EXPIRE_MINUTES=30
+   TOKEN_TYPE="Bearer"
+   API_V1_STR="https://localhost:8000"
    ```
 
 5. Inicie o servidor:
