@@ -1,8 +1,10 @@
 from fastapi import FastAPI, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from models import Token, TokenData
+from config import settings
 import utils
 import sqlite3
+
 
 app = FastAPI()
 
@@ -13,18 +15,18 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
-            headers={"WWW-Authenticate": "Bearer"},
+            headers={"WWW-Authenticate": f"{settings.TOKEN_TYPE}"},
         )
-    access_token = utils.create_access_token(data={"sub": user["username"], "role": user["role"]})
-    return {"access_token": access_token, "token_type": "bearer"}
+    access_token = utils.create_access_token(data={"sub": user["username"], "role": user["role"], "fullname": user["fullname"]})
+    return {"access_token": access_token, "token_type": f"{settings.TOKEN_TYPE}"}
 
 @app.get("/user")
 def read_user_data(current_user: TokenData = Depends(utils.get_current_active_user)):
-    if current_user.role != "user":
+    if current_user.role != "user" or current_user.role == 'admin':
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN, detail="Not enough permissions"
         )
-    return {"message": "Hello User!", "user": current_user.username}
+    return {"message": f"Hello {current_user.fullname}!", "user": current_user.username}
 
 @app.get("/admin")
 def read_admin_data(current_user: TokenData = Depends(utils.get_current_active_user)):
@@ -32,7 +34,7 @@ def read_admin_data(current_user: TokenData = Depends(utils.get_current_active_u
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN, detail="Not enough permissions"
         )
-    return {"message": "Hello Admin!", "admin": current_user.username}
+    return {"message": f"Hello {current_user.fullname}!", "admin": current_user.username}
 
 @app.post("/data")
 def create_data(content: str, current_user: TokenData = Depends(utils.get_current_active_user)):

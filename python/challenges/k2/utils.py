@@ -6,8 +6,8 @@ from config import settings
 from models import TokenData
 
 fake_users_db = {
-    "user": {"username": "user", "role": "user", "password": "L0XuwPOdS5U"},
-    "admin": {"username": "admin", "role": "admin", "password": "JKSipm0YH"},
+    "user": {"username": "user", "role": "user", "password": "L0XuwPOdS5U", "fullname": "Pedro Machado"},
+    "admin": {"username": "admin", "role": "admin", "password": "JKSipm0YH", "fullname": "Panosso"}
 }
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -40,11 +40,13 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     )
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        print(payload)
         username: str = payload.get("sub")
         role: str = payload.get("role")
+        fullname: str = payload.get("fullname")
         if username is None or role is None:
             raise credentials_exception
-        token_data = TokenData(username=username, role=role)
+        token_data = TokenData(username=username, role=role, fullname=fullname)
     except JWTError:
         raise credentials_exception
     user = get_user(fake_users_db, username=token_data.username)
