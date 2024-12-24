@@ -53,22 +53,18 @@ Esta API foi desenvolvida utilizando **FastAPI** e permite autenticação via JW
    uvicorn api:app --reload
    ```
 
-## Utilizando o Docker
+## Docker
 
-1. Clone o repositório:
+Para rodar o projeto em um container Docker:
+
+1. Construa a imagem:
    ```bash
-   git clone https://github.com/Panosso/k2_challenge.git
-   cd k2_challenge
+   docker build -t jwt-auth-api .
    ```
 
-2. Criar a imagem
+2. Rode o container:
    ```bash
-   docker builder build . -t k2_challenge_docker
-   ```
-
-3. Subir o docker com a imagem criada
-   ```bash
-   docker run 
+   docker run -d -p 8000:8000 --env-file .env jwt-auth-api
    ```
 
 ## Uso
