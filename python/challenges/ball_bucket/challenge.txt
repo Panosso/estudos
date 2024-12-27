@@ -1,0 +1,15 @@
+There are M buckets arranged in a row. Each buckets either is empty or contains a ball. The bucket are specified as a string buckets consisting of characters "." (empty bucket) and "B" (bucket with a ball). For example, for buckets = "B.BB.B..B" the row buckets appears as follows:
+
+In one move you can take the ball out of any bucket and place it in another (empty) bucket. Your goal is to arrange the balls to create a alternating sequence of full and empty buckets. In other words, the distance between 2 consegutive balls should be equal to 2. Nota that the sequence may start at any bucket.
+
+What is the minimum number of moves required to create a correct sequence of balls in buckets?
+
+wite a function:
+
+    def solution(buckets)
+
+that, given a string buckets of lenght N, return the minimum number of moves required to create the described sequence. If it is impossible to create a sequence, return -1.
+
+    The lenght of string buckets is within the range [1..100000]
+    String buckets is made only of characters 'B' and/or '.'
+    There is at least one ball in the buckets

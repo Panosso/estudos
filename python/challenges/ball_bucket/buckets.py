@@ -3,31 +3,32 @@
 
 def solution(buckets):
     
-    string_len = len(buckets)
+    buckets = list(buckets)
+    bucket_len = len(buckets)
     ball_count = buckets.count("B")
     moves = 0
-    infos = {'ball_off': [], 'safe_space': []}
+    infos = {'ball_off': {}, 'safe_space': {}}
 
-    if string_len % 2 == 0:
-        is_possible = -1 if ball_count > int(string_len / 2) else 0
+    if bucket_len % 2 == 0:
+        is_possible = -1 if ball_count > int(bucket_len / 2) else 0
 
     else:
-        is_possible = -1 if ball_count > int((string_len + 1) / 2) else 0
+        is_possible = -1 if ball_count > int((bucket_len + 1) / 2) else 0
 
     if is_possible == -1:
         return is_possible
     
     else:
         for i in range(len(buckets)):
-            buckets_place = buckets[i]
+            actual_pos = buckets[i]
             if i == 0:
                 if buckets[i] == '.' and buckets[i+1] == '.':
                     infos['safe_space'].append(i)
 
                 elif buckets[i] == 'B' and buckets[i+1] == 'B':
-                    infos['ball_off'].append(i)
+                    infos['ball_off'].append(i+1)
 
-            elif i == (string_len - 1):
+            elif i == (bucket_len - 1):
                 pass
 
             elif buckets[i] == '.':
@@ -48,20 +49,28 @@ def solution(buckets):
 
             else:
 
+                #That mean i'm a 'B' and in a wrong place
                 if buckets[i - 1] == 'B' or buckets[i + 1] == 'B':
-                    if len(infos['safe_space']) > 0:
+                    if buckets[i + 1] == '.':
+                        buckets[i] = '.'
+                        buckets[i+1] = 'B'
+                        moves += 1
+
+                    elif len(infos['safe_space']) > 0:
                         buckets[i] = '.'
                         buckets[infos['safe_space'][0]] = 'B'
                         moves += 1
 
                     else:
-                        infos['ball_off'].append(i)
+                        if i not in infos['ball_off']:
+                            infos['ball_off'].append(i)
 
     return moves
 
+print(solution('BB.B.BBB...'))
 # print(solution('.B.B.B'))
-# print(solution('B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.BB'))
+# print(solution('B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.B.'))
 # print(solution('B.B.BB.'))
-print(solution('....BBBBB..'))
+# print(solution('BB..BBB....'))
 
 # print(solution('B.BBB.B......BBBBBBBBBBBBBBB.................'))
