@@ -21,6 +21,7 @@ async def get_current_user(token: str = Depends(oauth_reusavel)) -> User:
 
         #token data
         token_data = TokenPayload(**payload)
+        print(token_data)
         if datetime.fromtimestamp(token_data.exp) < datetime.now():
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                                 detail='Token Expirado',
@@ -32,3 +33,21 @@ async def get_current_user(token: str = Depends(oauth_reusavel)) -> User:
             detail='Erro na validação',
             headers={'WWW-Authenticate': 'Bearer'}
             )
+    
+    except Exception as e:
+        raise HTTPException(
+            detail = f'Erro {e}',
+            headers = {'WWW-Authenticate': 'Bearer'}
+        )
+    
+    user = await UserService.get_user_by_id(token_data.sub)
+
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail = 'Não foi possivel encontar o usuario',
+            headers={'WWW-Authenticate': 'Bearer'}
+        )
+    
+
+    return user
