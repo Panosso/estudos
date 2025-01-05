@@ -2,9 +2,16 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib import messages
 from django.urls import reverse
+<<<<<<< HEAD
 
 #Verifica se o usuario pode autenticar e o login dele, criando sessão cookie e afins
 from django.contrib.auth import authenticate, login
+=======
+from django.contrib.auth.decorators import login_required
+
+#Verifica se o usuario pode autenticar e o login dele, criando sessão cookie e afins
+from django.contrib.auth import authenticate, login, logout
+>>>>>>> python_framework
 
 from .forms import RegisterForm, LoginsForm
 
@@ -75,6 +82,8 @@ def login_create(request):
         messages.error(request, 'Error to validate form data')
     
     return redirect(login_url)
+<<<<<<< HEAD
+=======
 
 #Avisa o Django que para acessar essa view o usuario precisa estar logado
 #Esse next envia o usuario para onde ele tentou acessar sem estar logado.
@@ -83,3 +92,4 @@ def logout_user(request):
     logout(request)
 
     return redirect(reverse('authors:login'))
+>>>>>>> python_framework

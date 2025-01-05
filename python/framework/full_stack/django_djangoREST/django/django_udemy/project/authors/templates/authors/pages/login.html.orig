@@ -18,8 +18,11 @@
 
             <p>
                 Você está logado como: {{ request.user.username }}
+<<<<<<< HEAD
+=======
                 Please,
                 <a href="{% url 'authors:logout' %}">Logout</a>
+>>>>>>> python_framework
             </p>
 
         {% endif %}

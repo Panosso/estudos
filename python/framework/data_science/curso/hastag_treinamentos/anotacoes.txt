@@ -1,0 +1,39 @@
+CRISP-DM - CRoss Industry Standard Process for Data Mining
+
+    Entendimento do negocio -> Entendimento dos dados -> Preparação dos dados -> Análise/Modelagem -> Validação -> Preparação/Visualização
+
+    Entendimento e negocio:
+
+        Ser transparente com o cliente para evitar problemas de comunicação
+
+    Entendimento dos dados e Preparação dos dados:
+
+        Pegar os dados de forma mais concisa possível.
+
+    Análise e Modelagem:
+
+        Analise exploratoria, tratamento dos dados, definição do modelo.
+
+    Validação:
+
+        Meu modelo está resolvendo o mue problema?
+
+    Preparação/Visualização
+
+        Gerar gráficos e relatórios que mostrem os dados e indicadores que eu criei para tomada de descição
+
+NumPy:
+
+    Biblioteca para grandes quantidades de dados, como matrizes, arrays, colunas e afins otimizada para calculos pesados. Servindo como base par ao pandas para criar arrays, dataframes alem de estrutura de n dimensões.
+
+Pandas:
+
+    Biblioteca de alta performance e de fácil uso.
+
+    Series: São os dados de uma coluna.
+
+    Todas os dados das colunas precisam ser do mesmo tipo de dado.
+
+Numpy:
+
+    O NumPy funciona com arrays, porém arrays são trabalhados de forma mais rapida.
