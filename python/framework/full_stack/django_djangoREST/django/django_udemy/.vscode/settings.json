@@ -4,8 +4,8 @@
         "-s",
         "./project",
         "-p",
-        "test*.py"
+        "*test*.py"
     ],
-    "python.testing.pytestEnabled": false,
+    "python.testing.pytestEnabled": true,
     "python.testing.unittestEnabled": true
 }

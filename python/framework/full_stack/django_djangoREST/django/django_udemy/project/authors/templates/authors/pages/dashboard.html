@@ -1,0 +1,22 @@
+<!-- Adiciona o html base.html ao código, equivalente a copiar o cod do arquivo e colocar no lugar da linha
+    Porém ao extender o arquivo é possível usar os blocks contidos nele, como o block title
+    e o bloco content.
+
+    Portanto o Django vai, ver o que tem nesses blocos adicionar no base.html e então gerar a pagina final
+-->
+{% extends 'global/base.html' %}
+
+{% block title %} DashBoard ({{ request.user }}) {% endblock title %}
+
+{% block content %}
+
+    <div class="main-content center container">
+
+        <h2>DashBoard: ({{ request.user }}) </h2>
+
+        {% include 'global/partials/messages.html' %}
+
+    </div>
+
+{% endblock content%}
+
