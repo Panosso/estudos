@@ -8,5 +8,8 @@ urlpatterns = [
     path('create/', views.register_create, name='register_create'),
     path('login/', views.login_view, name='login'),
     path('login/create', views.login_create, name='login_create'),
-    path('logout/', views.logout_user, name='logout')
+    path('logout/', views.logout_user, name='logout'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('dashboard/recipe/<int:id>/edit/', views.dashboard_recipe_edit, name='dashboard_recipe_edit'),
+    path('dashboard/recipe/new', views.dashboard_recipe_new, name='dashboard_recipe_new'),
 ]

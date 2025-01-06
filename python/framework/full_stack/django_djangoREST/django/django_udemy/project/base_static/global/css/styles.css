@@ -400,6 +400,11 @@ h6 {
   color: var(--color-debug-dark);
 }
 
+.authors-dashboard-container {
+  max-width: 64rem;
+  padding: var(--spacing-gutter-medium);
+}
+
 /* Generics */
 
 .center {

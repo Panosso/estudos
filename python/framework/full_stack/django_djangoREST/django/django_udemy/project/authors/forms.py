@@ -1,8 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from collections import defaultdict
 
 from utils.django_forms import strong_password
+from recipes.models import Recipe
 
 class RegisterForm(forms.ModelForm):
     
@@ -122,3 +124,30 @@ class LoginsForm(forms.Form):
             'placeholder': "Digite sua senha"
             })
     )
+
+class AuthorRecipeForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self._my_errors = defaultdict(list)
+
+    class Meta:
+        model = Recipe
+        fields = 'title', 'description', 'preparation_time', \
+            'preparation_time_unit', 'servings', 'servings_unit', \
+            'preparation_steps', 'cover'
+
+    def clean(self, *args, **kwargs):
+        super_clean = super().clean(*args, **kwargs)
+
+        cd = self.cleaned_data
+        title = cd.get('title')
+
+        if len(title) < 5:
+            self._my_errors['title'].append('Tem que ter 5 letras')
+
+        if self._my_errors:
+            raise ValidationError(self._my_errors)
+
+        return super_clean

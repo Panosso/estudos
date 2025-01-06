@@ -3,13 +3,21 @@
 
 <head>
     {% include 'global/partials/head.html' %}
-    <title>{% block title %}{% endblock title %} Recipes</title>
+    <title>{% block title %}{% endblock title %}</title>
 </head>
 
 <body>
-    {% include 'global/partials/header.html' %}
-    {% include 'global/partials/search.html' %}
-
+    <header class="main-header-container">
+        <div class="main-header container">
+            <h1>
+                <a class="main-logo" href="{% url 'recipes:home' %}">
+                    <i class="{% block icon_app %}{% endblock icon_app %}"></i>
+                    <span class="main-logo-text">{% block app_name %}{% endblock app_name %}</span>
+                </a>
+            </h1>
+        </div>
+    </header>
+    
     <main class="main-content-container">
         {% block content %} {% endblock content %}
         {% include 'global/partials/pagination.html' %}

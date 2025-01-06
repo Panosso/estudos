@@ -1,8 +1,10 @@
 {% extends 'global/base.html' %}
 
-{% block title %}Home | {% endblock title %}
+{% block title %} Recipes {% endblock title %}
 
 {% block content %}
+
+{% include 'global/partials/search.html' %}
 
 {% include 'global/partials/messages.html' %}
 
@@ -16,5 +18,11 @@
         <h1>No recipes found here</h1>
     </div>
 {% endfor %}
+
 </div>
+
 {% endblock content %}
+
+{% block app_name %} Recipes {% endblock app_name %}
+
+{% block icon_app %} fas fa-utensils main-logo-icon {% endblock icon_app %}

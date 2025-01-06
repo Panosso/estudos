@@ -14,17 +14,7 @@
 
         <h2> Login </h2>
 
-        {% if request.user.is_authenticated %}
-
-            <p>
-                Você está logado como: {{ request.user.username }}
-                Please,
-                <a href="{% url 'authors:logout' %}">Logout</a>
-            </p>
-
-        {% endif %}
-
-        {% include 'global/partials/messages.html' %}
+        {% include 'authors/partials/login_messages.html' %}
 
     </div>
 

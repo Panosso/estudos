@@ -6,11 +6,11 @@
 -->
 {% extends 'global/base.html' %}
 
-{% block title %}Register | {% endblock title %}
+{% block title %}Register {% endblock title %}
 
 {% block content %}
 
-    <div class="main-content center container">
+    <div class="main-content center container" style="margin-top: 15px">
 
         <h2>Register: {{ request.session.number }}</h2>
 
@@ -63,3 +63,6 @@
 
 {% endblock content%}
 
+{% block app_name %} Authors {% endblock app_name %}
+
+{% block icon_app %} fas fa-user main-logo-icon {% endblock icon_app %}
