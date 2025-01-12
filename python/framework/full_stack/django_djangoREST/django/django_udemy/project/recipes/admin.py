@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericStackedInline
+from tag.models import Tag
 
 from .models import Category, Recipe
 
@@ -6,6 +8,12 @@ from .models import Category, Recipe
 class CategoryAdmin(admin.ModelAdmin):
     ...
 
+class TagInLine(GenericStackedInline):
+    model = Tag
+    fields = ('name',)
+
+    #Quantidade de campos que vão aparecer na receita
+    extra = 2
 
 #Outro modo de adicionar um model no admin do django
 @admin.register(Recipe)
@@ -33,6 +41,8 @@ class RecipeAdmin(admin.ModelAdmin):
 
     #Quando utilizado essa vairavel, no momento que estamos preenchendo o campo da tupla, o campo slug tbm será preenchido.
     prepopulated_fields = {"slug": ["title"]}
+
+    inlines = (TagInLine,)
 
 #Registra o model no admin do django
 admin.site.register(Category, CategoryAdmin)

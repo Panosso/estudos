@@ -1,5 +1,9 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
+from slugify import slugify
+from django.contrib.contenttypes.fields import GenericRelation
+from tag.models import Tag
 
 
 class Category(models.Model):
@@ -31,6 +35,23 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True
     )
+    #Gera a relação com o model de tags
+    tags = GenericRelation(Tag, related_query_name='recipes')
+
 
     def __str__(self):
         return self.title
+
+    #Permite que no django admin, apareça a opção 'Ver no site'
+    def get_absolute_url(self):
+        return reverse('recipes:recipe', args=(self.id, ))
+
+    #Metodo que salva a informação, el roda toda vez que vamos salvar um registro no model
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = f'{slugify(self.title)}'
+            self.slug = slug
+
+        #Chamo o métodod a class para sobreescrever
+        return super().save(*args, **kwargs)
+

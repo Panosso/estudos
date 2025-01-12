@@ -10,6 +10,10 @@ urlpatterns = [
     path('login/create', views.login_create, name='login_create'),
     path('logout/', views.logout_user, name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('dashboard/recipe/<int:id>/edit/', views.dashboard_recipe_edit, name='dashboard_recipe_edit'),
-    path('dashboard/recipe/new', views.dashboard_recipe_new, name='dashboard_recipe_new'),
+    # path('dashboard/recipe/<int:id>/edit/', views.dashboard_recipe_edit, name='dashboard_recipe_edit'),
+
+    #Passando uma class view como view, usando o método as_view
+    path('dashboard/recipe/<int:id_receita>/edit/', views.DashboardRecibe.as_view(), name='dashboard_recipe_edit'),
+    path('dashboard/recipe/new', views.DashboardRecibe.as_view(), name='dashboard_recipe_new'),
+    path('dashboard/recipe/delete/', views.DashboardRecibeDelete.as_view(), name='dashboard_recipe_delete'),
 ]

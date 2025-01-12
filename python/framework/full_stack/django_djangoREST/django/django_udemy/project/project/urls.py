@@ -18,12 +18,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from .views import home_page
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
     path('recipes/', include('recipes.urls')),
     path('authors/', include('authors.urls')),
-]
+] + debug_toolbar_urls()
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
