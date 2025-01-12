@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericForeignKey
+# from django.contrib.contenttypes.models import ContentType
+# from django.contrib.contenttypes.fields import GenericForeignKey
 from django.utils.text import slugify
 import string
 from random import SystemRandom
@@ -10,18 +10,18 @@ class Tag(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
 
-    #Campos para relação genéricas, esses campos tem um nome padrao do Django
+    # #Campos para relação genéricas, esses campos tem um nome padrao do Django
     
-    # Representa o model que queremos encaixar aqui
-    #   O django entende que nesse caso o app Tags não vai reconhecer o recipe, mas o recipe vai conhecer o Tag
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    # # Representa o model que queremos encaixar aqui
+    # #   O django entende que nesse caso o app Tags não vai reconhecer o recipe, mas o recipe vai conhecer o Tag
+    # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
 
-    # Representa o id da linha do model descrito acima
-    #   Recomandação utilizar o PositiveIntegerField por trabalhar com ID, porém no nosso projeto usamos o UUID que contêm letra
-    object_id = models.CharField(max_length=255)
+    # # Representa o id da linha do model descrito acima
+    # #   Recomandação utilizar o PositiveIntegerField por trabalhar com ID, porém no nosso projeto usamos o UUID que contêm letra
+    # object_id = models.CharField(max_length=255)
 
-    # Um campo que representa a relação genérica que conhece os campos acima (content_type e object Id)
-    content_object = GenericForeignKey('content_type', 'object_id')
+    # # Um campo que representa a relação genérica que conhece os campos acima (content_type e object Id)
+    # content_object = GenericForeignKey('content_type', 'object_id')
 
     def save(self, *args, **kwargs):
         if not self.slug:

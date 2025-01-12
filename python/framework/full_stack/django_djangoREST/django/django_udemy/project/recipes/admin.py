@@ -8,9 +8,9 @@ from .models import Category, Recipe
 class CategoryAdmin(admin.ModelAdmin):
     ...
 
-class TagInLine(GenericStackedInline):
-    model = Tag
-    fields = ('name',)
+# class TagInLine(GenericStackedInline):
+#     model = Tag
+#     fields = ('name',)
 
     #Quantidade de campos que vão aparecer na receita
     extra = 2
@@ -42,7 +42,7 @@ class RecipeAdmin(admin.ModelAdmin):
     #Quando utilizado essa vairavel, no momento que estamos preenchendo o campo da tupla, o campo slug tbm será preenchido.
     prepopulated_fields = {"slug": ["title"]}
 
-    inlines = (TagInLine,)
+    # inlines = (TagInLine,)
 
 #Registra o model no admin do django
 admin.site.register(Category, CategoryAdmin)
