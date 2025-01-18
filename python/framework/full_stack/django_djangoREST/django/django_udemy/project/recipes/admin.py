@@ -5,8 +5,9 @@ from tag.models import Tag
 from .models import Category, Recipe
 
 #Cria a class para ser adicionada no django admin
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    ...
+    list_display = ('id', 'name',)
 
 # class TagInLine(GenericStackedInline):
 #     model = Tag
@@ -45,4 +46,4 @@ class RecipeAdmin(admin.ModelAdmin):
     # inlines = (TagInLine,)
 
 #Registra o model no admin do django
-admin.site.register(Category, CategoryAdmin)
+# admin.site.register(Category, CategoryAdmin)
