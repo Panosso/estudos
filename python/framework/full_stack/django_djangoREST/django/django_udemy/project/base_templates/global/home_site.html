@@ -1,0 +1,24 @@
+{% extends 'global/base.html' %}
+
+{% block title %}Home Site {% endblock title %}
+
+{% block content %}
+
+{% include 'global/partials/messages.html' %}
+
+<div class="main-content main-content-list container">
+
+    <div class="container">
+        Selecione para qual app deseja ir:
+        <ul>
+            <li><a href="{% url 'recipes:home' %}">Recipes</a></li>
+            <li><a href="{% url 'authors:register'%}">Authors</a></li>
+        </ul>
+    </div>
+
+</div>
+{% endblock content %}
+
+{% block app_name %} {{ app_name }} {% endblock app_name %}
+
+{% block icon_app %} {{ icon_app }} {% endblock icon_app %}

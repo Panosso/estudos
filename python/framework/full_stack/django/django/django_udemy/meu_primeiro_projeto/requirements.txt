@@ -1,7 +1,0 @@
-dj-database-url
-dj-static
-Django
-python-decouple
-pytz
-static3
-gunicorn

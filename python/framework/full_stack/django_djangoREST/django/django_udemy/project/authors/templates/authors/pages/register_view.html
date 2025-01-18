@@ -1,0 +1,68 @@
+<!-- Adiciona o html base.html ao código, equivalente a copiar o cod do arquivo e colocar no lugar da linha
+    Porém ao extender o arquivo é possível usar os blocks contidos nele, como o block title
+    e o bloco content.
+
+    Portanto o Django vai, ver o que tem nesses blocos adicionar no base.html e então gerar a pagina final
+-->
+{% extends 'global/base.html' %}
+
+{% block title %}Register {% endblock title %}
+
+{% block content %}
+
+    <div class="main-content center container" style="margin-top: 15px">
+
+        <h2>Register: {{ request.session.number }}</h2>
+
+        {% include 'global/partials/messages.html' %}
+
+    </div>
+
+    <div class="main-content container">
+
+        <form action="{% url 'authors:register_create' %}" method="post">
+            {% csrf_token %}
+            <div class="form-content form-content-grid">
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}"> {{field.label}} </label>
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="help-text">
+                            {{ field.help_text }}
+                        </p>
+                    {% endif %}
+
+                    {{ field.errors }}
+
+                </div>
+            {% endfor %}
+
+            {% if form.erros %}
+            <div class="form-content form-content-grid">
+                <div class="form-group">
+                    <div class="message message-error">
+                        Tem erros no form, arrume!!
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            </div>
+
+            <div class="form-content form-content-grid">
+                <div class="form-group">
+                  <button type="submit">Send</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock content%}
+
+{% block app_name %} Authors {% endblock app_name %}
+
+{% block icon_app %} fas fa-user main-logo-icon {% endblock icon_app %}
