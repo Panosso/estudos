@@ -3,8 +3,6 @@ from pathlib import Path
 from sqlalchemy import create_engine, String, Boolean, select
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session
 
-from werkzeug.security import generate_password_hash, check_password_hash
-
 #Pega o caminho atual do arquivo de execução, até a pasta onde ele está
 pasta_atual = Path(__file__).parent
 PATH_TO_BD = pasta_atual / 'bd_usuarios.sqlite'

@@ -88,7 +88,7 @@ class Recipe(models.Model):
             quality=50,
         )
 
-    #Metodo que salva a informação, el roda toda vez que vamos salvar um registro no model
+    #Metodo que salva a informação, ele roda toda vez que vamos salvar um registro no model
     def save(self, *args, **kwargs):
 
         if not self.slug:

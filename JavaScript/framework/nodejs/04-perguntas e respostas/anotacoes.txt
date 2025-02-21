@@ -8,7 +8,7 @@ Como funciona o forEach:
 
     produtos.forEach(function(produto){código JavaScript})
 
-    Para cada item dentro do array produtos, será aplicada a função que está dentro dos ()
+    Para cada item dentro do array produtos, será aplicada a função que está dentro dos primeiros ()
 
 pm2 é uma biblioteca que permite que o programa node rode em segundo plano, para isntala-lo:
 

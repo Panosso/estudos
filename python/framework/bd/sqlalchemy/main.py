@@ -1,9 +1,5 @@
 from time import sleep
 
-import streamlit as st
-
-from crud import le_todos_usuarios
-
 def login():
     with st.container(border=True):
         st.markdown('Bem vindo a tela de login')

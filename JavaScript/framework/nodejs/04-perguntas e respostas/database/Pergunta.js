@@ -14,7 +14,7 @@ const Pergunta = conn.connection.define('perguntas', {
     }
 })
 
-//Sincroniza com o banco, forca false, faz com que a tabela nao seja criada caso exista.
+//Sincroniza com o banco, force false, faz com que a tabela nao seja criada caso exista.
 Pergunta.sync({force: false}).then(() => {});
 
 module.exports = Pergunta;
