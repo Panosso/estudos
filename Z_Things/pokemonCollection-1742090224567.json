@@ -1,0 +1,50 @@
+[
+  {
+    "color": "default",
+    "type": "scizor",
+    "size": "big",
+    "name": "Rex",
+    "generation": "gen2",
+    "originalSpriteSize": 32
+  },
+  {
+    "color": "default",
+    "type": "gengar",
+    "size": "nano",
+    "name": "Ollie",
+    "generation": "gen1",
+    "originalSpriteSize": 32
+  },
+  {
+    "color": "default",
+    "type": "alakazam",
+    "size": "nano",
+    "name": "Lola",
+    "generation": "gen1",
+    "originalSpriteSize": 32
+  },
+  {
+    "color": "default",
+    "type": "venusaur",
+    "size": "nano",
+    "name": "Simba",
+    "generation": "gen1",
+    "originalSpriteSize": 32
+  },
+  {
+    "color": "default",
+    "type": "typhlosion",
+    "size": "nano",
+    "name": "Rex",
+    "generation": "gen2",
+    "originalSpriteSize": 32
+  },
+  {
+    "color": "default",
+    "type": "gyarados",
+    "size": "nano",
+    "name": "Jax",
+    "generation": "gen1",
+    "originalSpriteSize": 32
+  }
+]
