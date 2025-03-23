@@ -12,16 +12,14 @@ from .views import site, api
 
 app_name = 'recipes'
 recipe_api_v2_router = SimpleRouter()
-recipe_api_v2_router.register('api/v4view', 
+recipe_api_v2_router.register('', 
                               views.RecipeAPIv4List,
                             #   basename= Não é preiso informar pq a class tem um queryset
                               )
 
-print(recipe_api_v2_router.urls)
-
 
 urlpatterns = [
-    path('', views.RecipeListViewsHome.as_view(), name="home"),
+    path('pagina_inicial/', views.RecipeListViewsHome.as_view(), name="home"),
     path('api/v1/', views.RecipeListViewsHomeApi.as_view(), name="api_v1"),
     path('api/v1/<int:pk>/', views.RecipeDetailAPI.as_view(), name="api_v1_detail"),
     path('search/', views.search, name="search"),

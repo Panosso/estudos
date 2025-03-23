@@ -1,14 +1,6 @@
 [
   {
     "color": "default",
-    "type": "scizor",
-    "size": "big",
-    "name": "Rex",
-    "generation": "gen2",
-    "originalSpriteSize": 32
-  },
-  {
-    "color": "default",
     "type": "gengar",
     "size": "nano",
     "name": "Ollie",
@@ -33,17 +25,25 @@
   },
   {
     "color": "default",
-    "type": "typhlosion",
+    "type": "hitmonlee",
     "size": "nano",
-    "name": "Rex",
+    "name": "Coco",
+    "generation": "gen1",
+    "originalSpriteSize": 32
+  },
+  {
+    "color": "default",
+    "type": "scizor",
+    "size": "nano",
+    "name": "Benji",
     "generation": "gen2",
     "originalSpriteSize": 32
   },
   {
     "color": "default",
-    "type": "gyarados",
+    "type": "lapras",
     "size": "nano",
-    "name": "Jax",
+    "name": "Bruno",
     "generation": "gen1",
     "originalSpriteSize": 32
   }

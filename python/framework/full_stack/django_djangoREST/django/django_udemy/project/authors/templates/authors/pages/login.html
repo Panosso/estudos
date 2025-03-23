@@ -24,31 +24,31 @@
             {% csrf_token %}
             <div class="form-content form-content-grid">
 
-            {% for field in form %}
-                <div class="form-group">
-                    <label for="{{ field.id_for_label }}"> {{field.label}} </label>
-                    {{ field }}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}"> {{field.label}} </label>
+                        {{ field }}
 
-                    {% if field.help_text %}
-                        <p class="help-text">
-                            {{ field.help_text }}
-                        </p>
-                    {% endif %}
+                        {% if field.help_text %}
+                            <p class="help-text">
+                                {{ field.help_text }}
+                            </p>
+                        {% endif %}
 
-                    {{ field.errors }}
+                        {{ field.errors }}
 
-                </div>
-            {% endfor %}
+                    </div>
+                {% endfor %}
 
-            {% if form.erros %}
-            <div class="form-content form-content-grid">
-                <div class="form-group">
-                    <div class="message message-error">
-                        Tem erros no form, arrume!!
+                {% if form.erros %}
+                <div class="form-content form-content-grid">
+                    <div class="form-group">
+                        <div class="message message-error">
+                            Tem erros no form, arrume!!
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% endif %}
+                {% endif %}
 
             </div>
 
