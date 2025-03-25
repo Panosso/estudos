@@ -65,6 +65,7 @@ app.post("/game",(req, res) => {
 })
 
 app.delete("/game/:id",(req, res) => {
+    
     if(isNaN(req.params.id)){
         res.sendStatus(400);
     }else{
