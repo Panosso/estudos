@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de games</title>
+    <hr>
+    <h4>Lista de games</h4>
+    <div id="games-list">
+        <ul id="games"></ul>
+    </div>
+    <button type="button" onclick="atualizar_game()">Atualizar</button>
+    <hr>
+    <h4>Novo Game</h4>
+    <input type="text" name="title" id="title" placeholder="Título"><br>
+    <input type="number" name="year" id="year" placeholder="Ano"><br>
+    <input type="number" name="price" id="price" placeholder="Preço"><br>
+    <button type="button" onclick="create_game()">Criar</button>
+
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    
+    function create_game(){
+        var titleInput = document.getElementById("title");
+        var yearInput = document.getElementById("year");
+        var priceInput = document.getElementById("price");
+
+        var games = {
+            title: titleInput.value,
+            year: yearInput.value,
+            price: priceInput.value
+        }
+
+        console.log(games)
+
+        axios.post("http://localhost:45678/game", games).then(response => {
+            if(response.status == 200){
+                alert("Game cadastrado")
+                atualizar_game()
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+
+    }
+    
+
+    function atualizar_game(){
+
+        axios.get("http://localhost:45678/games").then(response => {
+
+            var games = response.data;
+            var list = document.getElementById("games")
+            var listGamesDiv = document.getElementById("games-list")
+            var listGamesUl = document.createElement("ul")
+            list.remove()
+            listGamesUl.id = "games"
+            listGamesDiv.appendChild(listGamesUl)
+            
+            var list = document.getElementById("games")
+
+            games.forEach(game => {
+                var item = document.createElement("li");
+                item.innerHTML= game.title + " - " + game.price
+                list.appendChild(item)
+            });
+
+        })
+
+    }
+
+
+    axios.get("http://localhost:45678/games").then(response => {
+        var games = response.data;
+        var list = document.getElementById("games");
+
+        games.forEach(game => {
+            var item = document.createElement("li");
+            item.innerHTML= game.title + " - " + game.price
+            list.appendChild(item)
+        });
+    }).catch(error => {
+        console.log(error)
+    })
+
+
+
+</script>
+</html>
