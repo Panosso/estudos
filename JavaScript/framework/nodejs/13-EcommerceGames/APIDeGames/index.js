@@ -2,10 +2,46 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors")
+const jwt = require("jsonwebtoken")
+
+const JWTSecret = "uohohdsohudsahodasohdpahgupsihgaiuoshgiosadh"
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors())
+
+//Middleware: Uma função que é executada antes da requisição enviada pelo usuário.
+function authMiddle(req, res, next){
+
+    const authToken = req.headers['authorization']
+
+    if (authToken != undefined){
+        const bearer = authToken.split(" ")
+        var token = bearer[1]
+
+        jwt.verify(token, JWTSecret, (err, data) => {
+            if (err){
+                res.status(401)
+                res.json({err: "Token inválido"})
+            }else{
+
+                //Adiciona essas variáveis na requisição, sendo possível recupera-las na rota
+                req.token = token
+                req.loggedUser = {id: data.id, email: data.email}
+
+
+                //Funcão responsável por passar a requisição do middleware para a rota desejada
+                next()
+            }
+        })
+
+    }else{
+        res.status(401)
+        res.json({err: "Token Inválido"})
+    }
+
+
+}
 
 var DB = {
     games: [
@@ -27,10 +63,73 @@ var DB = {
             year: 2012,
             price: 20
         }
+    ],
+    users : [
+        {
+            id: 1, 
+            nome: "Pedro",
+            email: "pedro@pedro.com.br",
+            passwd: "123321123321"
+        },
+
+        {
+            id: 2, 
+            nome: "Pedro2",
+            email: "pedro2@pedro2.com.br",
+            passwd: "asddsaasddsa"
+        }
+
     ]
 }
 
-app.get("/games",(req, res) => {
+app.post("/auth", (req, res) =>{
+
+    var {email, passwd} = req.body;
+
+    if (email != undefined){
+
+        //Verifica se o e-mail existe no banco
+        var user = DB.users.find(user => user.email == email)
+
+        if (user != undefined){
+
+            if (user.passwd == passwd) {
+
+                jwt.sign({id: user.id, email: user.email}, 
+                        JWTSecret,
+                        {expiresIn:'48h'},
+                        (err, token) => {
+                            if(err){
+                                res.status(400)
+                                res.json({err: "Falha interna"})
+                            }else{
+                                res.status(200)
+                                res.json({token: token})
+                            }
+                })
+
+            }else{
+                res.status(401);
+                res.json({err: "Não autorizado"})
+            }
+
+        }else{
+            res.status(404);
+            res.json({err: "O e-mail não existe na base de dados"})
+        }
+
+    }else {
+        res.status(400);
+        res.json({err: "O e-mail está invalido"})
+    }
+
+
+})
+
+app.get("/games", authMiddle, (req, res) => {
+
+    //Recuperando as variaveis criadas no middleware
+    console.log(req.loggedUser)
     res.statusCode = 200;
     res.json(DB.games);
 });

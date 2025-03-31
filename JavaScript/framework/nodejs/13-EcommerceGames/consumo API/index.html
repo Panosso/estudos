@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <h2>Login</h2>
+    <input type="text" name="email" id="email" placeholder="email">
+    <br>
+    <input type="text" name="passwd" id="passwd" placeholder="passwd">
+    <br>
+    <button onclick="login()">Entrar</button>
+
     <title>Loja de games</title>
     <hr>
     <h4>Lista de games</h4>
@@ -30,7 +38,35 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    
+
+    function login(){
+        var emailField = document.getElementById("email")
+        var passwdField = document.getElementById("passwd")
+
+        var email = emailField.value;
+        var passwd = passwdField.value;
+
+        axios.post("http://localhost:45678/auth", {
+            email,
+            passwd
+        }).then(res => {
+            var token = res.data.token
+            localStorage.setItem("Nome", "Pedro Panosso")
+            localStorage.setItem("Site", "pedropanosso")
+            localStorage.setItem("Jwt", token)
+
+        }).catch(err => {
+            alert("Não logado!!!")
+        })
+
+    }
+
+    var axiosConfig = {
+        headers : {
+            Authorization: "Bearer " + localStorage.getItem("Jwt")
+        }
+    }
+
     function update_game(){
 
         var idInput = document.getElementById("idEdit")
@@ -113,7 +149,7 @@
 
     function atualizar_game(){
 
-        axios.get("http://localhost:45678/games").then(response => {
+        axios.get("http://localhost:45678/games", axiosConfig).then(response => {
 
             var games = response.data;
             var list = document.getElementById("games")
