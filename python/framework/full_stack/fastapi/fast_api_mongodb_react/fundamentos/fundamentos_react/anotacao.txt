@@ -1,0 +1,17 @@
+Para criar um projeto React, é necessário o node instalado.
+
+    Para verificar se tem o node instalado, utilizar o comando:
+
+        node -v
+
+    Ele tem que retornar a versão do node insalado, caso nao retorne isso, o node precisa ser instalado.
+
+    Após verificar o node, é necessário instalar a biblioteca do react, usando o comando
+
+        npm install create-react-app
+
+    Utilizando o comando npx, é possível criar um projeto:
+
+        npx create-react-app <nome do projeto>
+
+    Após isso será criado um proejto com o nome e então toda sua estrutura.

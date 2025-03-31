@@ -22,10 +22,14 @@ function App() {
         >
           Learn React
         </a>
+        {/* Chama os APP criados. */}
         <HelloWorld/>
         <MeuNome nome="Pedro"/>
-        <Profissional nome="Pedro" idade='32' profissao="Programador" foto="https://www.planura.mg.leg.br/imagens/teste.jpg/image_preview"/>
+        <Profissional nome={novoNome} idade='32' profissao="Programador" foto="https://www.planura.mg.leg.br/imagens/teste.jpg/image_preview"/>
       </header>
+      <body className="Body_app_js">
+        <h1>Body App Js</h1>
+      </body>
     </div>
   );
 }

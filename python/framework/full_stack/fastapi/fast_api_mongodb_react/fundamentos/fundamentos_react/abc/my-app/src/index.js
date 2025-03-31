@@ -4,10 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-//Variavel que vai pegar o elemento dentro do html e armazenar em root
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-//Renderiza o que estiver em src/App.js ou sr c/App.jsx, no caso é o arquivo importado em cima
 root.render(
   <React.StrictMode>
     <App />
