@@ -135,17 +135,37 @@ app.get("/games", authMiddle, (req, res) => {
 });
 
 app.get("/game/:id",(req, res) => {
+    
     if(isNaN(req.params.id)){
         res.sendStatus(400);
     }else{
-        
+    
         var id = parseInt(req.params.id);
+
+        HATEOAS = [
+            {
+                href: "http://localhost:45678/game/" + id,
+                method: "GET",
+                rel: "get_game"
+            },
+            {
+                href: "http://localhost:45678/game/" + id,
+                method: "DELETE",
+                rel: "delete_game"
+            },
+            {
+                href: "http://localhost:45678/auth",
+                method: "POST",
+                rel: "login"
+            }            
+        ]
+
 
         var game = DB.games.find(g => g.id == id);
 
         if(game != undefined){
             res.statusCode = 200;
-            res.json(game);
+            res.json({game: game, _link: HATEOAS});
         }else{
             res.sendStatus(404);
         }
