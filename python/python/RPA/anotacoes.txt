@@ -1,0 +1,3 @@
+Criar um executavel para o arquivo py. Utilizar a biblioteca pyinstaller, ela vai gerar as dependencias e tudo necessário para fazer o exe do programa.
+
+    pyinstaller.exe -w <nome do arquivo>.py
