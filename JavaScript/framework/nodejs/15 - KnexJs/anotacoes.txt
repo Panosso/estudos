@@ -1,0 +1,7 @@
+Knex 
+
+    Biblioteca pra atuar com vários bancos SQL, como redis, mysql, postgre e afins.
+
+    Querybuilder: Montador de query via programação.
+
+    Vantagem de usar os querybuilder, ele é mais versátil para trabalhar com bancos, diferente do ORM
