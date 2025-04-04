@@ -1,0 +1,65 @@
+Pipeline: 
+
+    Um pipeline de dados é essencialmente o conjunto das etapas envolvidas na agregação, organização e movimentação de dados. Basicamente é uma série de etapas de processamento de dados.
+
+    Normalmente o pipeline inclui carregar dados brutos em uma tabela de preparação (Staging Area) para armazenamento temporário e , em seguida, altera-los antes de inseri-los no destino.
+
+    Se os dados não estiverem carregados, ele serão ingeridos no início do pipeline. Existe uma série de etapas nas quais cada etapa fornece uma saída que é a entrada para a proxima etapa.
+
+    O pipeline possui 3 componentes:
+
+        Origem: De onde os dados serão usados ou coletados.
+
+        Processamento: Fragmentação e manipulação dos dados e enviados para o Destino
+
+        Destino: Local onde sera armazenado os dados dos passos anteriores.
+
+
+Pipeline de dados X Pipeline ETL:
+
+    A principal diferença entr eles é, que o pipeline ETL é uma parte do pipeline de dados.
+
+Algumas ferramentas de construção de pipeline
+
+    Ferramentas de Pipeline:
+
+        Apache Beam, Stich, Keboola, dremio, dataform.
+
+
+    Ferramentas para armazenamento:
+
+        Delta Lake: Ferramenta open source para manipular e processar os dados.
+
+    Ferramenta para real time analytics
+
+        Tableau, a medida que os dados são transformados eles já são entregues
+
+Ciclo de vida engenharia de dados, cada parte do ciclo pode ser um Pipeline ou tudo pode ser colocado em um unico pipeline
+
+
+    Ciclo de vida:
+
+        Fontes de dados: Ponto de partida de uma aplicaão ou pipeline.
+
+        Injestão de dados: Retirar os dados da origem ou fonte e colocar em sua plataforma de dados, como amazon S3, local, data lake e afins.
+
+        Transformação e Enriquecimento: Enriquecimento dos dados, ou integrar dados, fazendo com que dados separados ou de origens diferentes fiquem no mesmo 'tipo'.
+
+        Carga e Uso dos dados: Como esses dados transformados serão utilizados, para alimentar um dashboard, uma ML.
+
+        Armazenamento: Local onde os dados dos passos anteriores ficaram armazenados.
+
+        Analytics, Machine Learning e IA, Relatório e Dashboard: Locais que utilizaram os dados manipulados.
+
+    Arquietura de dados: Escolhe o que será usado no projeot, como linguagem, qual plataforma cloud e afins.
+
+    Gestão de Dados e Metadados: Parte responsável para saber se os dados podem ser utilizado.
+
+    Orquestração: Gerenciamento de pipelines
+
+    Segurança: Quem pode ver e fazer o que for necessário nos acessos aos dados.
+
+    CI/CD: Modelos para que o software possa garantir uma integridade dos dados e não 'quebrar' o que já foi feito.
+
+    DataOps: é uma metodologia que combina práticas ágeis, automação e colaboração entre equipes de dados (como engenheiros, cientistas de dados e analistas) para melhorar a qualidade, velocidade e confiabilidade do fluxo de dados dentro de uma organização
+
