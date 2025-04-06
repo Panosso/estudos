@@ -1,0 +1,19 @@
+VueJs
+
+    Permite que sejam criadas páginas dinamicas, com compoenentes onde são partes do site, que podem ser atualizados sozinhos sem precisar recarregar a página, conhecido por SPA(Single Page Aplication).
+
+    VueJs utiliza o node como isntalador, e para instalar o vue cli é necessário rodar o comando:
+
+        npm install -g @vue/cli
+
+    Com o comando abaixo é possível ja criar um projeto com seus componentes:
+
+        vue create <nome_projeto>
+
+    Iniciando o servidor de desenvolvimento.
+
+        npm run serve
+
+    O main.js é o responsável por criar o projeto Vue e dentro dele é configurado tudo que será renderizado e configurado.
+
+    O que são componentes
