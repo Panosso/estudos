@@ -63,3 +63,95 @@ Ciclo de vida engenharia de dados, cada parte do ciclo pode ser um Pipeline ou t
 
     DataOps: é uma metodologia que combina práticas ágeis, automação e colaboração entre equipes de dados (como engenheiros, cientistas de dados e analistas) para melhorar a qualidade, velocidade e confiabilidade do fluxo de dados dentro de uma organização
 
+Arquietura de Pipeline de Dados
+
+    São partes da arquitetura de dados de uma empresa, que por sua vez é parte da plataforma de dados da empresa, portanto, cada pipeline deve ter um propósito, que atendam os requisitos da empresa assim como segurança e flexibilidade com mudanças ao longo do tempo. Pois os requerimentos de hoje não serão os mesmos de amanhã. 
+
+    Uma boa estratégia é criar uma PoC (Porva de conceito), uma espécie de laboratório, que simula cenários, valida requisitos de negócio, testa ferramentas e ajuda a prever os custos.
+
+    Pipelines: 
+
+        Bancos de Dados Transacional, local onde os dados são salvos de cada departamento, como RH, Vendas, Compras e afins.
+
+        Extração de Dados: Momento onde os dados são retirados dos bancos transacionais e enviado para um local de armazenamento.
+
+        Limpeza e Transformação: Local onde é transformados e formatado os dados utilizando softwares como o databricks, sendo eles, após a limpeza, enviados para um outro data lake, datastore, outro banco e afins.
+
+        Consultas Ad-Hoc com SQL: Consultas para geração de relatórios usando o power BI entre outro softwares para uma primeira análise.
+
+        Processamento dos dados: Momento os dados são buscados para enviar para um programa de ML
+
+    Todos os conceitos apresentados, fazem parte do pipeline de dados, sendo a extração e limpeza e transformação o pipeline ETL. Enquanto o pipeline de ML, é a soma de tudo isso, mais a parte de previsões em Tempo real e análise dos usuários de negócio.
+
+    Antes de pensar em arquitetura, as seguintes perguntas devem ser respondidas:
+
+        1 Quais são os requisitos de negócio?
+
+        2 Quais resultados finais são necessários?
+
+        3 Os dados estão disponíveis? Quais são as fontes?
+
+        4 Quais tipos de formato de dados estão disponíveis?
+
+        5 Quais o cresimento esperado do volume de dados?
+
+        6 Quanto de armazenamento será necessário?
+
+        7 Quanto de capacidade computacional será necessário?
+
+        8 Usaremos dados em batch, em streaming ou ambos?
+
+        9 ja temos tecnologia que permita criar os pipelines?
+
+        10 Quais tecnologias devem ser consideradas?
+
+        11 Quais são os acordos de Nível de Serviço (SLA's)?
+
+        12 Qual o custo de implementar e manter os pipelines?
+
+        13 Qual será o destino do pipeline?
+
+        14 Como será o monitoramento?
+
+        15 Usaremos diversos pipelines encadeados?
+
+        16 Vamos criar os pipelines locais, na nuvem ou ambos?
+
+Estudo de caso:
+
+    O caso:
+
+        Para ajudar você na compreensão sobre o que é o design da arquitetura de pipeline de dado vamos trabalhar em um estudo de caso. Aqui está a definiçãodo problema: 
+        
+            Você trabalha para  uma empresa de  manufatura de médio porte que fabrica utensílios domésticos.  A empresa adquiriu recentemente alguns novos equipamentos de fabricação. Essas novas  máquinas  são  sofisticadas  e  podem  se  conectar  à  rede  da  empresa,  enviando  um sinal/dados cada vez que umitem é produzido. O sinal é enviado em formato TXT como arquivo plano para um computador na rede local da empresa.
+            
+            Em  vez  de  contar  manualmente  o  estoque,  a  empresa  gostaria  que  a  equipe  de engenharia  de  dados  capturasse  os  dados  gerados  pelas  novas  máquinas  e  os  alimentasse  no sistema  de  estoqueque  reside  na  rede  local,  além  de  fornecer  painéis  de  rendimento  das máquinas a fim de prever a necessidade de manutenção preventivae reduzir o tempo de parada das máquinas para manutenção.
+            
+            Os dados são gerados pelas máquinas a cada 1 hora e armazenados no servidor local. A empresa tem atualmente 10 máquinas e mais 5 serão compradas com entrega prevista para o próximo semestre. Cada máquina gera 1 arquivo de aproximadamente 1 MB. A empresa funciona de segunda à sexta, 12 horas por dia.
+            
+            A  empresa  tem  um departamento  de  TI com 15 profissionais,  sendo  3  Engenheiros  de Dados,  1  Arquiteto  de  Dados, 1  Engenheiro  de  Machine  Learning, 2Cientistasde  Dados  e  1 Analista de Dados, entre outros profissionais. Em breve a empresa irá contratar um Engenheiro de IA
+            
+            Odepartamento  de  TI  ainda  está  no  meio  de  uma  transição  para  a  nuvem,  eles  têm alguma infraestrutura na AWS (Amazon Web Service) e alguns servidores locais que hospedam o sistema usado para os registros demanufatura. 
+            
+            Como Arquiteto de Dados ou Engenheiro de Dados, você foi encarregado de decidir como implementarum pipeline de dados que atenda esses requisitos. 
+            
+            Vamos percorrer o processo de design da arquitetura de um pipeline de dados e como podemos abordar as diferentes maneiras de implementar uma solução.
+
+    Manufatura
+
+        Compreensão dos Requisitos de Negócio:
+
+            - Compreendendo o problema
+            - Compreendemos o que deve ser entregue
+            - Pesquisamos as fontes de dados
+            - Identificamos a infraestrutura atual e o que será necessário
+            - Desenhamos um esboço da solução
+
+        Pipeline de Dados:
+
+            As maquinas enviam os arquivos para um computador local --> O computador salva os dados em formato TXT --> Enviar os arquivos para o ambiente de nuvem AWS
+
+            Os dados serão trabalhados como batch (em lote)
+
+            
+
