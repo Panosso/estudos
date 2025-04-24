@@ -1,3 +1,5 @@
+#Create a code that receive a list with integer numbers and check only positive numbers and check with the first number that miss in the list.
+
 def solution(A):
 
     A = sorted(list(set(A)))
