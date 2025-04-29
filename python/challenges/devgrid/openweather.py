@@ -56,16 +56,6 @@ class OpenWeatherClass:
             crud.create_citie_info(db, json_schema)
 
 
-
-
-
-
-
-
-
-
-
-
     # async def get_weather_city(self, city_id: int):
     #     async with aiohttp.ClientSession() as session:
     #             for city in config.Config.CITY_IDS:

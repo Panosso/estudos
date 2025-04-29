@@ -1,0 +1,57 @@
+Descrição do desafio
+Faça uma aplicação integrada com o OpenWeatherMap e o Twitter para que seja possível enviar um tweet com a temperatura atual e a previsão dos próximos cinco dias (média diária) de uma cidade.
+
+A aplicação não precisa apresentar uma interface gráfica. Basta que disponibilize um endpoint HTTP, que receba dados por parâmetro e, aí, construa o texto e publique o tweet.
+
+Não é necessário implementar controle de autenticação.
+
+Exemplo de tweet:
+34°C e nublado em <cidade> em 12/12. Média para os próximos dias: 32°C em 13/12, 25°C em 14/12, 29°C em 15/12, 33°C em 16/12 e 28°C em 16/12.
+
+Entregáveis
+Uma biblioteca que seja um SDK para integração com a API do OpenWeatherMap;
+
+Uma API que utiliza o SDK criado acima para realizar as requisições na API do OpenWeatherMap;
+
+A API precisa expor um endpoint que receba por parâmetro algum dado que identifique a cidade-alvo;
+
+A API deverá se comunicar com o Twitter utilizando um SDK (como o Tweepy, por exemplo).
+É necessário habilitar a conta de desenvolvedor do Twitter, então realize esse passo com antecedência.
+
+Requisitos de entrega
+Hospedar os itens em uma plataforma como GitHub ou GitLab
+
+Repositórios devem conter um README com instruções de configuração e inicialização
+
+Diferenciais
+Uso de Docker
+
+Baixo número de dependências
+
+Uso do FastAPI com programação assíncrona
+
+Uso de Pytest
+
+Processo de avaliação
+Primeira etapa:
+Demonstrar a aplicação em funcionamento (pode rodar localmente)
+
+Explicar a construção e arquitetura da aplicação (com base no repositório)
+
+Segunda etapa:
+Avaliação e feedback do código e funcionalidades
+
+Critérios de avaliação
+Aplicação de TDD (Test Driven Development)
+
+Uso de controle de versão (Git) bem organizado
+
+Legibilidade e elegância do código
+
+Arquitetura da solução
+
+Funcionalidades entregues
+
+Demonstração das funcionalidades
+
+Documentação
