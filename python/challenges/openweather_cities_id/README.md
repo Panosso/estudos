@@ -1,4 +1,4 @@
-# DevGrid Python Challenge
+# Python Challenge
 
 ## Descrição do desafio
 

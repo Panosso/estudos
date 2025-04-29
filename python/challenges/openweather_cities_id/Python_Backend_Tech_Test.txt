@@ -1,0 +1,61 @@
+Python Backend Tech Challenge
+Descrição
+Desenvolver um serviço backend em Python 3 que coleta dados meteorológicos da Open Weather API e armazena essas informações em formato JSON.
+
+O serviço deve expor dois endpoints:
+
+POST: recebe um ID definido pelo usuário, coleta informações climáticas de diversas cidades e armazena:
+
+ID único fornecido pelo usuário
+
+Data e hora da requisição
+
+Dados em JSON contendo:
+
+ID da cidade
+
+Temperatura em Celsius
+
+Umidade
+
+GET: recebe o ID definido pelo usuário e retorna a porcentagem de progresso da coleta de dados climáticos (quantidade de cidades já processadas).
+
+Especificações Técnicas
+Uso obrigatório de Python 3.
+
+Chamadas assíncronas para a API de múltiplas cidades do Open Weather (ver detalhes no link oficial).
+
+Limite de 60 cidades por minuto respeitado.
+
+Necessário criar uma conta na Open Weather API para obter um token de acesso (manter o token seguro como configuração do serviço).
+
+Código deve possuir mais de 90% de cobertura de testes.
+
+A solução deve ser disponibilizada em um repositório Git público (preferencialmente GitHub).
+
+Ambiente deve ser configurável e executável via Docker.
+
+Aplicação precisa ser escalável (replicável).
+
+Qualquer ferramenta, banco de dados ou framework pode ser usado, desde que as escolhas sejam explicadas.
+
+Dicas
+O processamento de todas as cidades pode demorar; tenha atenção com timeouts.
+
+Lembre-se de escrever um README.md claro, incluindo instruções de instalação, execução e testes.
+
+Entregáveis
+Link para o repositório Git contendo o projeto.
+
+Documentação contendo:
+
+Instruções para instalação do Docker
+
+Como executar o serviço
+
+Como rodar os testes
+
+Lista de IDs de Cidades
+Os IDs das cidades a serem consultadas estão listados no Apêndice A.
+
+(Nota: IDs disponíveis no final deste README ou em anexo ao projeto.)
