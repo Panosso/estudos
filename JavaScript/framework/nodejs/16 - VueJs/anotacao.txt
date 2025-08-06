@@ -16,4 +16,11 @@ VueJs
 
     O main.js é o responsável por criar o projeto Vue e dentro dele é configurado tudo que será renderizado e configurado.
 
-    O que são componentes
+        Assets: Local de arquivos estáticos
+
+        Components: Local onde ficar os componentes
+
+    O que são componentes: Um arquivo com códigos para uma determinada parte do site.
+
+        
+
